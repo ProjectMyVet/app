@@ -13,11 +13,19 @@ export default StyleSheet.create({
         backgroundColor: COLORS.LIGHT_GRAY,
         height: height,
         width: width / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     customer: {
         backgroundColor: COLORS.DARK_GRAY,
         height: height,
         width: width / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    image: {
+        width: width / 4,
+        height: width / 4,
     },
 });
   
