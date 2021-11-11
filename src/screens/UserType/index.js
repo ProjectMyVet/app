@@ -1,14 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import styles from './styles'
 
-export function UserTypeScreen() {
+export function UserTypeScreen({ navigation }) {
+
+  function handleSubmit(userType) {
+    console.log(userType)
+    navigation.navigate('Register')
+  }
+
   return (
     <View style={styles.container}>
-      <Text>User Type Screen</Text>
-      <StatusBar style="auto" />
+      <TouchableOpacity onPress={() => handleSubmit('vet')} style={styles.vet}>
+      
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleSubmit('customer')} style={styles.customer}>
+
+      </TouchableOpacity>
     </View>
   );
 }
