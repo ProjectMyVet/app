@@ -3,11 +3,11 @@ import { TouchableOpacity, View, Image } from 'react-native';
 
 import styles from './styles'
 
-export function UserTypeScreen({ navigation }) {
+export function UserTypeScreen({ navigation, route }) {
 
   function handleSubmit(userType) {
-    console.log(userType)
-    navigation.navigate('Register')
+    const user = route.params.user
+    navigation.navigate('Register', { userType, user })
   }
 
   return (

@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { Formik } from 'formik'
 import PropTypes from 'prop-types'
 
-export function Form(props) {
+export function MVForm(props) {
   const { initialValues, onSubmit, children, innerRef } = props
 
   return (
@@ -18,7 +18,7 @@ export function Form(props) {
   )
 }
 
-Form.propTypes = {
+MVForm.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,

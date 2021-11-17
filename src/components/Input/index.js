@@ -8,7 +8,7 @@ import { COLORS } from '../../constants'
 
 import styles from './styles'
 
-export function Input(props) {
+export function MVInput(props) {
   const { edit, value, innerRef, placeholder, ...otherProps } = props
 
   const [field, meta, helpers] = useField(props)
@@ -34,20 +34,9 @@ export function Input(props) {
     return null
   }
 
-  function renderLabel() {
-    if (edit) {
-      return (
-        <MVText style={styles.editLabel} size={17}>
-          {placeholder}
-        </MVText>
-      )
-    }
-    return null
-  }
-
   return (
     <View>
-      {renderLabel()}
+      <MVText style={styles.editLabel} size={17}>{placeholder}</MVText>
       <TextInput
         placeholder={placeholder}
         ref={innerRef}
@@ -62,7 +51,7 @@ export function Input(props) {
   )
 }
 
-Input.propTypes = {
+MVInput.propTypes = {
   name: PropTypes.string.isRequired,
   innerRef: PropTypes.func,
   placeholder: PropTypes.string,
@@ -70,7 +59,7 @@ Input.propTypes = {
   edit: PropTypes.bool,
 }
 
-Input.defaultProps = {
+MVInput.defaultProps = {
   innerRef: null,
   placeholder: '',
 }

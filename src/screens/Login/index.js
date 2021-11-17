@@ -2,13 +2,31 @@ import React from 'react'
 import { Image, View } from 'react-native'
 import { MVButton, MVText } from '../../components'
 import { AntDesign } from '@expo/vector-icons'
+import { ENV } from '../../../environment'
+import * as Google from 'expo-google-app-auth'
 
 import styles from './styles'
 
 export function LoginScreen({ navigation }) {
 
   function handleSubmit() {
-    navigation.navigate('UserType')
+    const config = {
+      iosClientId: ENV.IOS_CLIENT_ID,
+      androidClientId: ENV.ANDROID_CLIENT_ID,
+      scope: ['profile', 'email']
+    }
+    Google.logInAsync(config)
+      .then((result) => {
+          const { type, user } = result
+          if (type === 'success') {
+              setTimeout(() => navigation.navigate('UserType', { user }), 1000)
+          } else {
+              // TODO: Mostrar mensagem Sign In Canceled
+          }
+      })
+      .catch(error => {
+          console.log(error)
+      })
   }
 
   return (
