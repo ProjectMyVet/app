@@ -16,5 +16,20 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 20,
     },
+    imageContainer: {
+        alignItems: 'center'
+    },
+    image: {
+        width: 150,
+        height: 150,
+        borderRadius: 100,
+        borderWidth: 2,
+    },
+    buttonContainer: {
+        alignItems: 'center'
+    },
+    button: {
+        width: '90%',
+    },
 });
   

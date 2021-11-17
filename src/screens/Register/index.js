@@ -1,7 +1,6 @@
-import { StatusBar } from 'expo-status-bar'
 import React, { useRef, useEffect, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { MVText, MVForm, MVInput } from '../../components'
+import { Image, View, ScrollView } from 'react-native'
+import { MVText, MVForm, MVInput, MVButton } from '../../components'
 import { COLORS } from '../../constants'
 
 import styles from './styles'
@@ -9,28 +8,70 @@ import styles from './styles'
 export function RegisterScreen({ navigation, route }) {
   const formRef = useRef(null)
   const [user, setUser] = useState({})
+  const [userType, setUserType] = useState('')
 
   useEffect(() => {
     setUser(route.params.user)
+    setUserType(route.params.userType)
   }, [route])
 
+  function renderVetFields() {
+    if (userType === 'vet') {
+      return <>
+          <MVInput
+            name='crmv'
+            placeholder='CRMV'
+          />
+          <MVInput
+            name='career'
+            placeholder='Carreira'
+          />
+        </>
+    }
+  }
+
+  function renderCustomerFields() {
+    if (userType === 'customer') {
+      return <>
+          <MVInput
+            name='bio'
+            placeholder='Biografia'
+          />
+        </>
+    }
+  }
+
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <MVText size={22} color={COLORS.BLACK} style={styles.title}>Cadastro</MVText>
+      <View style={styles.imageContainer}>
+        <Image resizeMode='cover' style={styles.image} source={{ uri: user.photoUrl }} />
+      </View>
       <MVForm
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ name: user.name, email: user.email, crmv: '', career: '', bio: '' }}
           innerRef={formRef}
           onSubmit={({ email, password }) => {
             // efetuar chamada
           }}
         >
           <MVInput
+            name='name'
+            placeholder='Nome'
+            value={user.name}
+          />
+          <MVInput
             name='email'
             placeholder='E-mail'
             value={user.email}
-            onSubmitEditing={() => formService.setFocus('password')}
           />
+          {renderVetFields()}
+          {renderCustomerFields()}
         </MVForm>
-    </View>
+        <View style={styles.buttonContainer}>
+          <MVButton style={styles.button} >
+            <MVText>Continuar</MVText>
+          </MVButton>
+        </View>
+    </ScrollView>
   );
 }
