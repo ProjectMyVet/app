@@ -2,11 +2,12 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Image, View, ScrollView } from 'react-native'
 import { MVText, MVForm, MVInput, MVButton } from '../../components'
 import { COLORS } from '../../constants'
+import { FormService } from '../../services'
+import { Formik } from 'formik'
 
 import styles from './styles'
 
 export function RegisterScreen({ navigation, route }) {
-  const formRef = useRef(null)
   const [user, setUser] = useState({})
   const [userType, setUserType] = useState('')
 
@@ -15,27 +16,36 @@ export function RegisterScreen({ navigation, route }) {
     setUserType(route.params.userType)
   }, [route])
 
-  function renderVetFields() {
+  function renderVetFields(handleChange, handleBlur, values) {
     if (userType === 'vet') {
       return <>
-          <MVInput
-            name='crmv'
-            placeholder='CRMV'
+          <MVInput 
+            label='CRMV' 
+            placeholder='CRMV' 
+            onChangeText={handleChange('crmv')}
+            onBlur={handleBlur('crmv')}
+            value={values.crmv}
           />
-          <MVInput
-            name='career'
-            placeholder='Carreira'
+          <MVInput 
+            label='Carreira' 
+            placeholder='Carreira' 
+            onChangeText={handleChange('career')}
+            onBlur={handleBlur('career')}
+            value={values.career}
           />
         </>
     }
   }
 
-  function renderCustomerFields() {
+  function renderCustomerFields(handleChange, handleBlur, values) {
     if (userType === 'customer') {
       return <>
-          <MVInput
-            name='bio'
-            placeholder='Biografia'
+          <MVInput 
+            label='Biografia' 
+            placeholder='Biografia' 
+            onChangeText={handleChange('bio')}
+            onBlur={handleBlur('bio')}
+            value={values.bio}
           />
         </>
     }
@@ -47,31 +57,44 @@ export function RegisterScreen({ navigation, route }) {
       <View style={styles.imageContainer}>
         <Image resizeMode='cover' style={styles.image} source={{ uri: user.photoUrl }} />
       </View>
-      <MVForm
-          initialValues={{ name: user.name, email: user.email, crmv: '', career: '', bio: '' }}
-          innerRef={formRef}
-          onSubmit={({ email, password }) => {
-            // efetuar chamada
-          }}
-        >
-          <MVInput
-            name='name'
-            placeholder='Nome'
-            value={user.name}
-          />
-          <MVInput
-            name='email'
-            placeholder='E-mail'
-            value={user.email}
-          />
-          {renderVetFields()}
-          {renderCustomerFields()}
-        </MVForm>
-        <View style={styles.buttonContainer}>
-          <MVButton style={styles.button} >
-            <MVText>Continuar</MVText>
-          </MVButton>
-        </View>
+      <Formik
+        enableReinitialize
+        initialValues={{ name: user.name, email: user.email, crmv: '', career: '', bio: '' }}
+        onSubmit={(values) => {
+          console.log('batata')
+          console.log(values.name)
+          console.log(values.email)
+          console.log(values.crmv)
+          console.log(values.career)
+          console.log(values.bio)
+        }}
+      >
+        {({handleChange, handleBlur, handleSubmit, values}) => (
+          <View>
+            <MVInput 
+              label='Nome' 
+              placeholder='Nome' 
+              onChangeText={handleChange('name')}
+              onBlur={handleBlur('name')}
+              value={values.name}
+            />
+            <MVInput 
+              label='E-Mail' 
+              placeholder='E-Mail' 
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+            />
+            {renderVetFields(handleChange, handleBlur, values)}
+            {renderCustomerFields(handleChange, handleBlur, values)}
+            <View style={styles.buttonContainer}>
+              <MVButton style={styles.button} onPress={handleSubmit}>
+                Continuar
+              </MVButton>
+            </View>
+          </View>
+        )}
+      </Formik>
     </ScrollView>
   );
 }

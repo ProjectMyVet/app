@@ -2,20 +2,18 @@ import { StyleSheet } from 'react-native'
 import { COLORS } from '../../constants'
 
 export default StyleSheet.create({
-  input: {
-    padding: 5,
-    borderBottomWidth: 1,
-    borderColor: COLORS.BLACK,
-    minWidth: '100%',
+  label: {
+    color: COLORS.BLACK,
     fontSize: 16,
-    marginVertical: 15,
+    textAlign: 'left',
   },
-  error: {
-    position: 'absolute',
-    bottom: -5,
-    right: 10,
-  },
-  editLabel: {
-    marginTop: 15,
-  },
+  input: {
+    padding: 10,
+    fontSize: 16,
+    height: 50,
+    marginBottom: 10,
+    color: COLORS.DIM_GRAY,
+    borderBottomWidth: 1,
+    backgroundColor: COLORS.WHITE
+  }
 })
