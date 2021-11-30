@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Image, View, ScrollView } from 'react-native'
 import { MVText, MVForm, MVInput, MVButton } from '../../components'
 import { COLORS } from '../../constants'
-import { FormService } from '../../services'
 import { Formik } from 'formik'
 
 import styles from './styles'
@@ -67,6 +66,7 @@ export function RegisterScreen({ navigation, route }) {
           console.log(values.crmv)
           console.log(values.career)
           console.log(values.bio)
+          navigation.navigate('MenuTabNavigation')
         }}
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (
