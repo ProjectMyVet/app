@@ -7,47 +7,98 @@ import { Poppins_700Bold } from '@expo-google-fonts/poppins'
 import { Roboto_400Regular } from '@expo-google-fonts/roboto'
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
-import { LoginScreen, UserTypeScreen, RegisterScreen, Teste } from './screens'
+import { LoginScreen, UserTypeScreen, RegisterScreen, Teste, NewAttendenceScreen } from './screens'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
-export function MenuTabNavigation() {
+export function MenuTabNavigation({ navigation, route }) {
+  const userType = route.params.userType
 
   function renderIcon(name) {
     return <AntDesign name={name} size={23} />
   }
 
+  function renderCustomerTabNavigator() {
+    return (
+      <Tab.Navigator 
+        initialRouteName='Teste1'
+        screenOptions={{ headerShown: false }}
+      >
+        <Tab.Screen 
+          name='Teste1' 
+          component={NewAttendenceScreen} 
+          options={{
+            tabBarLabel: 'Teste 1',
+            tabBarIcon: () => renderIcon('home'),
+          }}
+        />
+        <Tab.Screen 
+          name='Teste2' 
+          component={NewAttendenceScreen} 
+          options={{
+            tabBarLabel: 'Teste 2',
+            tabBarIcon: () => renderIcon('home'),
+          }}
+        />
+        <Tab.Screen 
+          name='Teste3' 
+          component={NewAttendenceScreen} 
+          options={{
+            tabBarLabel: 'Teste 3',
+            tabBarIcon: () => renderIcon('home'),
+          }}
+        />
+      </Tab.Navigator>
+    )
+  }
+
+  function renderVetTabNavigator() {
+    return (
+      <Tab.Navigator 
+        initialRouteName='Teste1'
+        screenOptions={{ headerShown: false }}
+      >
+        <Tab.Screen 
+          name='Teste1' 
+          component={NewAttendenceScreen} 
+          options={{
+            tabBarLabel: 'Teste 1',
+            tabBarIcon: () => renderIcon('home'),
+          }}
+        />
+        <Tab.Screen 
+          name='Teste2' 
+          component={NewAttendenceScreen} 
+          options={{
+            tabBarLabel: 'Teste 2',
+            tabBarIcon: () => renderIcon('home'),
+          }}
+        />
+        <Tab.Screen 
+          name='Teste3' 
+          component={NewAttendenceScreen} 
+          options={{
+            tabBarLabel: 'Teste 3',
+            tabBarIcon: () => renderIcon('home'),
+          }}
+        />
+      </Tab.Navigator>
+    )
+  }
+
+  function renderTabNavigator(userType) {
+    if (userType === 'customer') {
+      return renderCustomerTabNavigator()
+    } else {
+      return renderVetTabNavigator()
+    }
+  }
+
   return (
-    <Tab.Navigator 
-      initialRouteName='Teste1'
-      screenOptions={{ headerShown: false }}
-    >
-      <Tab.Screen 
-        name='Teste1' 
-        component={Teste} 
-        options={{
-          tabBarLabel: 'Teste 1',
-          tabBarIcon: () => renderIcon('home'),
-        }}
-      />
-      <Tab.Screen 
-        name='Teste2' 
-        component={Teste} 
-        options={{
-          tabBarLabel: 'Teste 2',
-          tabBarIcon: () => renderIcon('home'),
-        }}
-      />
-      <Tab.Screen 
-        name='Teste3' 
-        component={Teste} 
-        options={{
-          tabBarLabel: 'Teste 3',
-          tabBarIcon: () => renderIcon('home'),
-        }}
-      />
-    </Tab.Navigator>
+    <>
+      {renderTabNavigator(userType)}
+    </>
   )
 }
 

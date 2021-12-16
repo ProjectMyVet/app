@@ -60,13 +60,14 @@ export function RegisterScreen({ navigation, route }) {
         enableReinitialize
         initialValues={{ name: user.name, email: user.email, crmv: '', career: '', bio: '' }}
         onSubmit={(values) => {
-          console.log('batata')
-          console.log(values.name)
-          console.log(values.email)
-          console.log(values.crmv)
-          console.log(values.career)
-          console.log(values.bio)
-          navigation.navigate('MenuTabNavigation')
+          const user = {
+            name: values.name,
+            email: values.email,
+            crmv: values.crmv,
+            career: values.career,
+            bio: values.bio
+          }
+          navigation.navigate('MenuTabNavigation', { userType, user })
         }}
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (
