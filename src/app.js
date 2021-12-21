@@ -1,13 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { YellowBox } from 'react-native'
+import { LogBox, YellowBox } from 'react-native'
 import { useFonts } from 'expo-font'
 import { Poppins_700Bold } from '@expo-google-fonts/poppins'
 import { Roboto_400Regular } from '@expo-google-fonts/roboto'
-import { AntDesign } from '@expo/vector-icons'
+import { AntDesign, Entypo, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
-import { LoginScreen, UserTypeScreen, RegisterScreen, Teste, NewAttendenceScreen } from './screens'
+import { 
+  LoginScreen,
+  UserTypeScreen,
+  RegisterScreen,
+  NewAttendenceScreen,
+  AttendenceScreen,
+  ProfileScreen,
+  PetsScreen,
+  ReminderScreen,
+  ScheduleScreen,
+} from './screens'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -22,31 +32,47 @@ export function MenuTabNavigation({ navigation, route }) {
   function renderCustomerTabNavigator() {
     return (
       <Tab.Navigator 
-        initialRouteName='Teste1'
+        initialRouteName='NewAttendenceScreen'
         screenOptions={{ headerShown: false }}
       >
         <Tab.Screen 
-          name='Teste1' 
-          component={NewAttendenceScreen} 
+          name='Reminder' 
+          component={ReminderScreen} 
           options={{
-            tabBarLabel: 'Teste 1',
-            tabBarIcon: () => renderIcon('home'),
+            tabBarLabel: 'Lembrete',
+            tabBarIcon: () => <AntDesign name='bells' size={26} />,
           }}
         />
         <Tab.Screen 
-          name='Teste2' 
-          component={NewAttendenceScreen} 
+          name='Attendence' 
+          component={AttendenceScreen} 
           options={{
-            tabBarLabel: 'Teste 2',
-            tabBarIcon: () => renderIcon('home'),
+            tabBarLabel: 'Atendimentos',
+            tabBarIcon: () => <Entypo name='list' size={26} />,
           }}
         />
         <Tab.Screen 
-          name='Teste3' 
+          name='NewAttendence' 
           component={NewAttendenceScreen} 
           options={{
-            tabBarLabel: 'Teste 3',
-            tabBarIcon: () => renderIcon('home'),
+            tabBarLabel: 'Novo',
+            tabBarIcon: () => <Ionicons name='add-circle-outline' size={28} />,
+          }}
+        />
+        <Tab.Screen 
+          name='Pets' 
+          component={PetsScreen} 
+          options={{
+            tabBarLabel: 'Pets',
+            tabBarIcon: () => <MaterialIcons name='pets' size={26} />,
+          }}
+        />
+        <Tab.Screen 
+          name='Profile' 
+          component={ProfileScreen} 
+          options={{
+            tabBarLabel: 'Perfil',
+            tabBarIcon: () => <Ionicons name='person' size={26} />,
           }}
         />
       </Tab.Navigator>
@@ -56,31 +82,31 @@ export function MenuTabNavigation({ navigation, route }) {
   function renderVetTabNavigator() {
     return (
       <Tab.Navigator 
-        initialRouteName='Teste1'
+        initialRouteName='Attendence'
         screenOptions={{ headerShown: false }}
       >
         <Tab.Screen 
-          name='Teste1' 
-          component={NewAttendenceScreen} 
+          name='Schedule' 
+          component={ScheduleScreen} 
           options={{
-            tabBarLabel: 'Teste 1',
+            tabBarLabel: 'Agenda',
             tabBarIcon: () => renderIcon('home'),
           }}
         />
         <Tab.Screen 
-          name='Teste2' 
-          component={NewAttendenceScreen} 
+          name='Attendence' 
+          component={AttendenceScreen} 
           options={{
-            tabBarLabel: 'Teste 2',
-            tabBarIcon: () => renderIcon('home'),
+            tabBarLabel: 'Atendimentos',
+            tabBarIcon: () => <Entypo name='list' size={26} />,
           }}
         />
         <Tab.Screen 
-          name='Teste3' 
-          component={NewAttendenceScreen} 
+          name='Profile' 
+          component={ProfileScreen} 
           options={{
-            tabBarLabel: 'Teste 3',
-            tabBarIcon: () => renderIcon('home'),
+            tabBarLabel: 'Perfil',
+            tabBarIcon: () => <Ionicons name='person' size={26} />,
           }}
         />
       </Tab.Navigator>
@@ -103,7 +129,7 @@ export function MenuTabNavigation({ navigation, route }) {
 }
 
 export default function App() {
-  YellowBox.ignoreWarnings(['Require cycles are allowed'])
+  LogBox.ignoreLogs(['Require cycles are allowed'])
   const [whereFontsLoaded] = useFonts({
     Roboto_400Regular,
     Poppins_700Bold,
