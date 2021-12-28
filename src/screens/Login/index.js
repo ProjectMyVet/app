@@ -19,7 +19,7 @@ export function LoginScreen({ navigation }) {
       .then((result) => {
           const { type, user } = result
           if (type === 'success') {
-              setTimeout(() => navigation.navigate('UserType', { user }), 1000)
+              setTimeout(() => navigation.navigate('UserType', { user }), 500)
           } else {
               // TODO: Mostrar mensagem Sign In Canceled
           }
