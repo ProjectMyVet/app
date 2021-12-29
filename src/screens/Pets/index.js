@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, ScrollView } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'; 
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'; 
 import { MVText, MVButton } from '../../components'
 
 import styles from './styles'
@@ -10,67 +10,78 @@ const mock = [
     id: 1,
     name: 'Doguinho',
     birthDate: '19-11-2010',
-    breed: 'Vira lata'
+    breed: 'Vira lata',
+    type: 'DOG'
   },
   {
     id: 2,
     name: 'Belinha',
     birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia'
+    breed: 'lulu-da-pomerânia',
+    type: 'OTHER'
   },
   {
     id: 3,
     name: 'Orlindo',
     birthDate: '19-11-2010',
-    breed: 'siames'
+    breed: 'siames',
+    type: 'CAT'
   },
   {
-    id: 1,
+    id: 4,
     name: 'Doguinho',
     birthDate: '19-11-2010',
-    breed: 'Vira lata'
+    breed: 'Vira lata',
+    type: 'DOG'
   },
   {
-    id: 2,
+    id: 5,
     name: 'Belinha',
     birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia'
+    breed: 'lulu-da-pomerânia',
+    type: 'OTHER'
   },
   {
-    id: 3,
+    id: 6,
     name: 'Orlindo',
     birthDate: '19-11-2010',
-    breed: 'siames'
+    breed: 'siames',
+    type: 'CAT'
   },
   {
-    id: 1,
+    id: 7,
     name: 'Doguinho',
     birthDate: '19-11-2010',
-    breed: 'Vira lata'
+    breed: 'Vira lata',
+    type: 'DOG'
   },
   {
-    id: 2,
+    id: 8,
     name: 'Belinha',
     birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia'
+    breed: 'lulu-da-pomerânia',
+    type: 'OTHER'
   },
   {
-    id: 3,
+    id: 9,
     name: 'Orlindo',
     birthDate: '19-11-2010',
-    breed: 'siames'
+    breed: 'siames',
+    type: 'CAT'
   },
   {
-    id: 1,
+    id: 10,
     name: 'Doguinho',
     birthDate: '19-11-2010',
-    breed: 'Vira lata'
+    breed: 'Vira lata',
+    type: 'DOG'
   },
   {
-    id: 2,
+    id: 11,
     name: 'Belinha',
     birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia'
+    breed: 'lulu-da-pomerânia',
+    type: 'OTHER'
   },
 ]
 
@@ -81,23 +92,37 @@ export function PetsScreen({ navigation }) {
       setPets(mock)
     },[navigation, pets])
 
-    function handleSubmit(item) {
+    function handlePetDetail(item) {
       navigation.navigate('PetDetail', { item })
+    }
+
+    function handleAddPet() {
+      navigation.navigate('NewPet')
+    }
+
+    function renderIcon(type) {
+      if (type === 'DOG') {
+        return <FontAwesome5 style={styles.icon} name="dog" size={24} color="black" />
+      } else if (type === 'CAT') {
+        return <FontAwesome5 style={styles.icon} name="cat" size={24} color="black" />
+      } else {
+        return <FontAwesome style={styles.icon} name="paw" size={24} color="black" />
+      }
     }
 
     return (
       <>
         <ScrollView contentContainerStyle={styles.container}>
           {pets.map((item) => (
-              <TouchableOpacity style={styles.item} onPress={() => handleSubmit(item)}>
-                <FontAwesome style={styles.icon} name="paw" size={24} color="black" />
+              <TouchableOpacity key={item.id} style={styles.item} onPress={() => handlePetDetail(item)}>
+                {renderIcon(item.type)}
                 <MVText style={styles.title}>{item.name}</MVText>
               </TouchableOpacity>
             ))
           }
           
         </ScrollView>
-        <MVButton style={styles.button}>
+        <MVButton style={styles.button} onPress={handleAddPet}>
           <MVText>Adicionar Pet</MVText>
         </MVButton>
       </>
