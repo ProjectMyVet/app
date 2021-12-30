@@ -2,7 +2,7 @@ import React from 'react'
 import { View, ScrollView } from 'react-native'
 import { MVText, MVButton, MVInput } from '../../components'
 import moment from 'moment'
-// import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker'
 import DateField from 'react-native-datefield'
 import { Formik } from 'formik'
 
@@ -14,7 +14,7 @@ export function NewPetScreen({ navigation }) {
         <ScrollView style={styles.container}>
           <Formik
             enableReinitialize
-            initialValues={{ name: '', email: '', crmv: '', career: '', date: '10/11/2015' }}
+            initialValues={{ name: '', email: '', crmv: '', career: '', date: '10-11-2015' }}
             onSubmit={(values) => {
               const user = {
                 name: values.name,
@@ -23,7 +23,7 @@ export function NewPetScreen({ navigation }) {
                 career: values.career,
                 bio: values.bio
               }
-              console.log(values.date)
+              // console.log(values.date)
               // navigation.navigate('MenuTabNavigation', { userType, user })
             }}
           >
@@ -44,7 +44,7 @@ export function NewPetScreen({ navigation }) {
                   value={values.email}
                   // onSubmit={(value) => handleChange(value.format("DD/MM/YYYY"), 'date')}
                 />
-                <DateField
+                {/* <DateField
                   editable={false}
                   labelDate='Dia'
                   labelMonth='Mês'
@@ -58,6 +58,26 @@ export function NewPetScreen({ navigation }) {
                   defaultValue={new Date(2015, 11, 10)}
                   styleInput={styles.inputBorder}
                   onSubmit={(value) => handleChange('date', value.toDateString())}
+                /> */}
+                <DatePicker
+                  style={styles.datePickerStyle}
+                  date={values.date}
+                  mode="date"
+                  placeholder="select date"
+                  format="DD-MM-YYYY"
+                  confirmBtnText="Confirmar"
+                  cancelBtnText="Cancelar"
+                  useNativeDriver={true}
+                  useN
+                  customStyles={{
+                    dateIcon: {
+                      display: 'none',
+                    },
+                    dateInput: {
+                      width: '100%'
+                    },
+                  }}
+                  onDateChange={handleChange('date')}
                 />
                 <View style={styles.buttonContainer}>
                   <MVButton style={styles.button} onPress={handleSubmit}>
