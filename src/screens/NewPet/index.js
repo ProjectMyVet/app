@@ -7,6 +7,7 @@ import DateField from 'react-native-datefield'
 import { Formik } from 'formik'
 
 import styles from './styles'
+import { COLORS } from '../../constants'
 
 export function NewPetScreen({ navigation }) {
 
@@ -42,43 +43,34 @@ export function NewPetScreen({ navigation }) {
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
                   value={values.email}
-                  // onSubmit={(value) => handleChange(value.format("DD/MM/YYYY"), 'date')}
                 />
-                {/* <DateField
-                  editable={false}
-                  labelDate='Dia'
-                  labelMonth='Mês'
-                  labelYear='Ano'
-                  styleInput={styles.inputBorder}
-                />
-                <DateField
-                  labelDate="Input date"
-                  labelMonth="Input month"
-                  labelYear="Input year"
-                  defaultValue={new Date(2015, 11, 10)}
-                  styleInput={styles.inputBorder}
-                  onSubmit={(value) => handleChange('date', value.toDateString())}
-                /> */}
-                <DatePicker
-                  style={styles.datePickerStyle}
-                  date={values.date}
-                  mode="date"
-                  placeholder="select date"
-                  format="DD-MM-YYYY"
-                  confirmBtnText="Confirmar"
-                  cancelBtnText="Cancelar"
-                  useNativeDriver={true}
-                  useN
-                  customStyles={{
-                    dateIcon: {
-                      display: 'none',
-                    },
-                    dateInput: {
-                      width: '100%'
-                    },
-                  }}
-                  onDateChange={handleChange('date')}
-                />
+                <View>
+                  <MVText style={styles.datePickerLabel}>Data de Nascimento</MVText>
+                  <DatePicker
+                    style={styles.datePickerStyle}
+                    date={values.date}
+                    mode="date"
+                    placeholder="select date"
+                    format="DD-MM-YYYY"
+                    confirmBtnText="Confirmar"
+                    cancelBtnText="Cancelar"
+                    useNativeDriver={true}
+                    useN
+                    customStyles={{
+                      dateIcon: {
+                        display: 'none',
+                      },
+                      dateInput: {
+                        alignItems: 'center',
+                        borderColor: COLORS.WHITE,
+                        borderBottomColor: COLORS.BLACK,
+                        marginTop: 10,
+                        color: COLORS.DIM_GRAY,
+                      },
+                    }}
+                    onDateChange={handleChange('date')}
+                  />
+                </View>
                 <View style={styles.buttonContainer}>
                   <MVButton style={styles.button} onPress={handleSubmit}>
                     Salvar

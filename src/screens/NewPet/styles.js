@@ -19,5 +19,12 @@ export default StyleSheet.create({
         borderWidth: 1,
         marginBottom: 20,
     },
+    datePickerLabel: {
+        fontSize: 16
+    },
+    datePickerStyle: {
+        width: '100%',
+        color: COLORS.WHITE
+    }
 });
   
