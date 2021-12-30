@@ -3,10 +3,10 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        padding: 20,
+        paddingTop: 40,
+        backgroundColor: COLORS.WHITE,
+        flexGrow: 1,
     },
     title: {
         fontSize: 22,

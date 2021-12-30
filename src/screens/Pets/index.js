@@ -120,11 +120,8 @@ export function PetsScreen({ navigation }) {
               </TouchableOpacity>
             ))
           }
-          
         </ScrollView>
-        <MVButton style={styles.button} onPress={handleAddPet}>
-          <MVText>Adicionar Pet</MVText>
-        </MVButton>
+        <MVButton style={styles.button} onPress={handleAddPet}>Adicionar Pet</MVButton>
       </>
     );
 }
