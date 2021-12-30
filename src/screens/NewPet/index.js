@@ -1,7 +1,9 @@
 import React from 'react'
 import { View, ScrollView } from 'react-native'
 import { MVText, MVButton, MVInput } from '../../components'
-import DatePicker from 'react-native-datepicker'
+import moment from 'moment'
+// import DatePicker from 'react-native-datepicker'
+import DateField from 'react-native-datefield'
 import { Formik } from 'formik'
 
 import styles from './styles'
@@ -12,7 +14,7 @@ export function NewPetScreen({ navigation }) {
         <ScrollView style={styles.container}>
           <Formik
             enableReinitialize
-            initialValues={{ name: '', email: '', crmv: '', career: '', date: '' }}
+            initialValues={{ name: '', email: '', crmv: '', career: '', date: '10/11/2015' }}
             onSubmit={(values) => {
               const user = {
                 name: values.name,
@@ -21,6 +23,7 @@ export function NewPetScreen({ navigation }) {
                 career: values.career,
                 bio: values.bio
               }
+              console.log(values.date)
               // navigation.navigate('MenuTabNavigation', { userType, user })
             }}
           >
@@ -39,16 +42,23 @@ export function NewPetScreen({ navigation }) {
                   onChangeText={handleChange('email')}
                   onBlur={handleBlur('email')}
                   value={values.email}
+                  // onSubmit={(value) => handleChange(value.format("DD/MM/YYYY"), 'date')}
                 />
-                {/* <DatePicker
-                  style={{width: 200}}
-                  date={values.date}
-                  format="DD-MM-YYYY"
-                  locale='pt-BR'
-                  onDateChange={handleChange('date')}
-                  
-                />    */}
-                <MVText style={{fontSize: 25}} >{values.date}</MVText>
+                <DateField
+                  editable={false}
+                  labelDate='Dia'
+                  labelMonth='Mês'
+                  labelYear='Ano'
+                  styleInput={styles.inputBorder}
+                />
+                <DateField
+                  labelDate="Input date"
+                  labelMonth="Input month"
+                  labelYear="Input year"
+                  defaultValue={new Date(2015, 11, 10)}
+                  styleInput={styles.inputBorder}
+                  onSubmit={(value) => handleChange('date', value.toDateString())}
+                />
                 <View style={styles.buttonContainer}>
                   <MVButton style={styles.button} onPress={handleSubmit}>
                     Salvar

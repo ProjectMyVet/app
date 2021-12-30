@@ -12,5 +12,12 @@ export default StyleSheet.create({
         fontSize: 22,
         color: COLORS.BLACK,
     },
+    inputBorder: {
+        width: '30%',
+        borderRadius: 8,
+        borderColor: '#cacaca',
+        borderWidth: 1,
+        marginBottom: 20,
+    },
 });
   
