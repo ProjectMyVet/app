@@ -1,5 +1,4 @@
 import React from 'react'
-import { View } from 'react-native'
 import { MVText } from '../../components'
 import DatePicker from 'react-native-datepicker'
 import styles from './styles'
@@ -8,11 +7,7 @@ import { COLORS } from '../../constants'
 export function MVDatePicker(props) {
     const { label, ...otherProps } = props
     return (
-        // <View>
-        //     <Text style={styles.label}>{label}</Text>
-        //     <TextInput style={styles.input} {...otherProps} />
-        // </View>
-        <View>
+        <>
             <MVText style={styles.datePickerLabel}>{label}</MVText>
             <DatePicker
                 {...otherProps}
@@ -36,6 +31,6 @@ export function MVDatePicker(props) {
                     },
                 }}
             />
-      </View>
+      </>
     )
 }

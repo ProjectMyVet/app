@@ -90,6 +90,7 @@ export function PetsScreen({ navigation }) {
 
     useEffect(() => {
       setPets(mock)
+      // TODO: rhian.costa - 30/12/2021 - call to search all the pets
     },[navigation, pets])
 
     function handlePetDetail(item) {

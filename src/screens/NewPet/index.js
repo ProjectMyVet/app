@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, Picker } from 'react-native'
 import { MVText, MVButton, MVInput, MVDatePicker } from '../../components'
 import { Formik } from 'formik'
 
@@ -12,69 +12,57 @@ export function NewPetScreen({ navigation }) {
         <ScrollView style={styles.container}>
           <Formik
             enableReinitialize
-            initialValues={{ name: '', email: '', crmv: '', career: '', date: '10-11-2015' }}
+            initialValues={{ name: '', breed: '', type: 'OTHER', birthDate: '10-11-2015' }}
             onSubmit={(values) => {
-              const user = {
+              const pet = {
                 name: values.name,
-                email: values.email,
-                crmv: values.crmv,
-                career: values.career,
-                bio: values.bio
+                breed: values.breed,
+                type: values.type,
+                birthDate: values.birthDate
               }
-              console.log(values.date)
-              // navigation.navigate('MenuTabNavigation', { userType, user })
+              console.log(pet)
+              // TODO: rhian.costa - 30/12/2021 - call to api to save a new pet
+              navigation.navigate('Pets', { pet })
             }}
           >
             {({handleChange, handleBlur, handleSubmit, values}) => (
               <View>
+                <MVText style={styles.title}>Cadastro de Pet</MVText>
                 <MVInput 
                   label='Nome' 
-                  placeholder='Nome' 
+                  placeholder='Bob' 
                   onChangeText={handleChange('name')}
                   onBlur={handleBlur('name')}
                   value={values.name}
                 />
-                <MVInput 
-                  label='E-Mail' 
-                  placeholder='E-Mail' 
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
-                />
-                {/* <View>
-                  <MVText style={styles.datePickerLabel}>Data de Nascimento</MVText>
-                  <DatePicker
-                    style={styles.datePickerStyle}
-                    date={values.date}
-                    mode="date"
-                    placeholder="select date"
-                    format="DD-MM-YYYY"
-                    confirmBtnText="Confirmar"
-                    cancelBtnText="Cancelar"
-                    useNativeDriver={true}
-                    useN
-                    customStyles={{
-                      dateIcon: {
-                        display: 'none',
-                      },
-                      dateInput: {
-                        alignItems: 'center',
-                        borderColor: COLORS.WHITE,
-                        borderBottomColor: COLORS.BLACK,
-                        marginTop: 10,
-                        color: COLORS.DIM_GRAY,
-                      },
-                    }}
-                    onDateChange={handleChange('date')}
-                  />
-                </View> */}
                 <MVDatePicker
                   label='Data de Nascimento'
-                  date={values.date}
-                  onDateChange={handleChange('date')}
+                  date={values.birthDate}
+                  onDateChange={handleChange('birthDate')}
                 />
-                <View style={styles.buttonContainer}>
-                  <MVButton style={styles.button} onPress={handleSubmit}>
+                <MVInput 
+                  label='Raça' 
+                  placeholder='Spitz-alemão-anão' 
+                  onChangeText={handleChange('breed')}
+                  onBlur={handleBlur('breed')}
+                  value={values.breed}
+                />
+                <View style={styles.picker}>
+                  <MVText style={styles.label}>Selecione o tipo do seu Pet</MVText>
+                  <Picker
+                    selectedValue={values.type}
+                    style={{ height: 20, width: 100}}
+                    onValueChange={handleChange('type')}
+                    itemStyle={{ fontSize: 16 }}
+                    prompt='OTHER'
+                  >
+                    <Picker.Item label="Cachorro" value="DOG" />
+                    <Picker.Item label="Gato" value="CAT" />
+                    <Picker.Item label="Outros" value="OTHER" />
+                  </Picker>
+                </View>
+                <View style={styles.button}>
+                  <MVButton onPress={handleSubmit}>
                     Salvar
                   </MVButton>
                 </View>

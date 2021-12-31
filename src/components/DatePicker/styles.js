@@ -7,6 +7,7 @@ export default StyleSheet.create({
     },
     datePickerStyle: {
         width: '100%',
-        color: COLORS.WHITE
+        color: COLORS.WHITE,
+        marginBottom: 10,
     }
 })

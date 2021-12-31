@@ -11,6 +11,9 @@ export default StyleSheet.create({
     title: {
         fontSize: 22,
         color: COLORS.BLACK,
+        marginTop: 10,
+        marginBottom: 20,
+        fontWeight: 'bold'
     },
     inputBorder: {
         width: '30%',
@@ -25,6 +28,19 @@ export default StyleSheet.create({
     datePickerStyle: {
         width: '100%',
         color: COLORS.WHITE
+    },
+    label: {
+        fontSize: 16,
+    },
+    picker: {
+        height: 200,
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+    },
+    button: {
+        width: '80%',
+        bottom: 0,
+        left: '10%'
     }
 });
   
