@@ -1,9 +1,6 @@
 import React from 'react'
 import { View, ScrollView } from 'react-native'
-import { MVText, MVButton, MVInput } from '../../components'
-import moment from 'moment'
-import DatePicker from 'react-native-datepicker'
-import DateField from 'react-native-datefield'
+import { MVText, MVButton, MVInput, MVDatePicker } from '../../components'
 import { Formik } from 'formik'
 
 import styles from './styles'
@@ -24,7 +21,7 @@ export function NewPetScreen({ navigation }) {
                 career: values.career,
                 bio: values.bio
               }
-              // console.log(values.date)
+              console.log(values.date)
               // navigation.navigate('MenuTabNavigation', { userType, user })
             }}
           >
@@ -44,7 +41,7 @@ export function NewPetScreen({ navigation }) {
                   onBlur={handleBlur('email')}
                   value={values.email}
                 />
-                <View>
+                {/* <View>
                   <MVText style={styles.datePickerLabel}>Data de Nascimento</MVText>
                   <DatePicker
                     style={styles.datePickerStyle}
@@ -70,7 +67,12 @@ export function NewPetScreen({ navigation }) {
                     }}
                     onDateChange={handleChange('date')}
                   />
-                </View>
+                </View> */}
+                <MVDatePicker
+                  label='Data de Nascimento'
+                  date={values.date}
+                  onDateChange={handleChange('date')}
+                />
                 <View style={styles.buttonContainer}>
                   <MVButton style={styles.button} onPress={handleSubmit}>
                     Salvar
