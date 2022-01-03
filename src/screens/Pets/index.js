@@ -9,7 +9,7 @@ const mock = [
   {
     id: 1,
     name: 'Doguinho',
-    birthDate: '19-11-2010',
+    birthDate: '19-11-2012',
     breed: 'Vira lata',
     type: 'DOG'
   },
@@ -93,8 +93,8 @@ export function PetsScreen({ navigation }) {
       // TODO: rhian.costa - 30/12/2021 - call to search all the pets
     },[navigation, pets])
 
-    function handlePetDetail(item) {
-      navigation.navigate('PetDetail', { item })
+    function handlePetDetail(pet) {
+      navigation.navigate('PetDetail', { pet })
     }
 
     function handleAddPet() {
