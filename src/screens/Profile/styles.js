@@ -3,14 +3,59 @@ import { COLORS } from '../../constants';
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        padding: 20,
+        paddingTop: 50,
+        backgroundColor: COLORS.WHITE,
+        flexGrow: 1,
+        alignItems: 'center'
     },
-    title: {
-        fontSize: 22,
+    imageContainer: {
+        alignItems: 'center'
+    },
+    image: {
+        width: 150,
+        height: 150,
+        borderRadius: 100,
+        borderWidth: 2,
+    },
+    name: {
+        fontSize: 20,
+        marginTop: 20,
         color: COLORS.BLACK,
     },
+    email: {
+        fontSize: 14,
+        color: COLORS.DIM_GRAY,
+    },
+    description: {
+        fontSize: 16,
+        marginTop: 30,
+        color: COLORS.BLACK,
+        textAlign: 'center'
+    },
+    statsTitle: {
+        marginTop: 30,
+        fontSize: 18
+    },
+    statsContainer: {
+        marginTop: 30,
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-evenly'
+    },
+    card: {
+        alignItems: 'center'
+    },
+    cardGrade: {
+        alignItems: 'center',
+        marginTop: 10
+    },
+    cardName: {
+        fontSize: 16
+    },
+    cardValue: {
+        fontSize: 26,
+        fontWeight: 'bold'
+    }
 });
   
