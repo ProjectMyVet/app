@@ -26,6 +26,12 @@ export default StyleSheet.create({
     image: {
         width: width / 4,
         height: width / 4,
+        margin: 200
     },
+    userTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginTop: 10
+    }
 });
   

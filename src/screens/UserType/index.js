@@ -1,5 +1,7 @@
-import React from 'react';
-import { TouchableOpacity, View, Image } from 'react-native';
+import React from 'react'
+import { TouchableOpacity, View, Image } from 'react-native'
+import { Fontisto, Foundation } from '@expo/vector-icons'
+import { MVText } from '../../components'
 
 import styles from './styles'
 
@@ -13,10 +15,14 @@ export function UserTypeScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => handleSubmit('vet')} style={styles.vet}>
-        <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} />
+        {/* <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} /> */}
+        <Fontisto name="doctor" size={120} color="black" />
+        <MVText style={styles.userTitle}>Veterinário</MVText>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => handleSubmit('customer')} style={styles.customer}>
-        <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} />
+        {/* <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} /> */}
+        <Foundation name="guide-dog" size={120} color="black" />
+        <MVText style={styles.userTitle}>Tutor</MVText>
       </TouchableOpacity>
     </View>
   );
