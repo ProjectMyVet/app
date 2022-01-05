@@ -12,7 +12,6 @@ export function MVDatePicker(props) {
             <DatePicker
                 {...otherProps}
                 style={styles.datePickerStyle}
-                mode="date"
                 placeholder="select date"
                 format="DD-MM-YYYY"
                 confirmBtnText="Confirmar"

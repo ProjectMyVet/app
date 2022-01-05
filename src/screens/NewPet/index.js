@@ -37,6 +37,7 @@ export function NewPetScreen({ navigation }) {
                 />
                 <MVDatePicker
                   label='Data de Nascimento'
+                  mode='date'
                   date={values.birthDate}
                   onDateChange={handleChange('birthDate')}
                 />

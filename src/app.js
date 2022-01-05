@@ -19,6 +19,8 @@ import {
   ScheduleScreen,
   PetDetailScreen,
   NewPetScreen,
+  NewReminderScreen,
+  ReminderDetailScreen,
 } from './screens'
 
 const Stack = createStackNavigator()
@@ -149,6 +151,8 @@ export default function App() {
         <Stack.Screen component={MenuTabNavigation} name='MenuTabNavigation' />
         <Stack.Screen component={PetDetailScreen} name='PetDetail' />
         <Stack.Screen component={NewPetScreen} name='NewPet' />
+        <Stack.Screen component={NewReminderScreen} name='NewReminder' />
+        <Stack.Screen component={ReminderDetailScreen} name='ReminderDetail' />
       </Stack.Navigator>
     </NavigationContainer>
   );
