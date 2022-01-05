@@ -5,17 +5,18 @@ import styles from './styles'
 import { COLORS } from '../../constants'
 
 export function MVDatePicker(props) {
-    const { label, ...otherProps } = props
+    const { label, mode, ...otherProps } = props
     return (
         <>
             <MVText style={styles.datePickerLabel}>{label}</MVText>
             <DatePicker
                 {...otherProps}
                 style={styles.datePickerStyle}
-                placeholder="select date"
-                format="DD-MM-YYYY"
-                confirmBtnText="Confirmar"
-                cancelBtnText="Cancelar"
+                placeholder='select date'
+                mode={mode}
+                format={mode == 'date' ? 'DD-MM-YYYY' : 'DD-MM-YYYY HH:mm'}
+                confirmBtnText='Confirmar'
+                cancelBtnText='Cancelar'
                 useNativeDriver={true}
                 customStyles={{
                         dateIcon: {
