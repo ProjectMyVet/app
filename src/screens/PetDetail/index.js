@@ -32,7 +32,7 @@ export function PetDetailScreen({ navigation, route }) {
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (
           <View>
-            <MVText style={styles.title}>Cadastro de Pet</MVText>
+            <MVText style={styles.title}>Detalhes do Pet</MVText>
             <MVInput 
               label='Nome' 
               placeholder='Bob' 

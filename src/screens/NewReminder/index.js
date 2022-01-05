@@ -18,7 +18,7 @@ export function NewReminderScreen({ navigation }) {
               action: values.action,
             }
             console.log(reminder)
-            // TODO: rhian.costa - 30/12/2021 - call to api to save a new pet
+            // TODO: rhian.costa - 30/12/2021 - call to api to save a new reminder
             navigation.navigate('Reminder', { reminder })
           }}
         >

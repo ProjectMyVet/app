@@ -39,7 +39,7 @@ export function ReminderScreen({ navigation }) {
         {reminders.map((item) => (
             <TouchableOpacity key={item.id} style={styles.item} onPress={() => handleReminderDetail(item)}>
               <MVText style={styles.title}>{item.action.substring(0, 20)}...</MVText>
-              <MVText style={styles.title}>{item.date.includes('00:00') ? item.date.substring(0, 10) : item.date}</MVText>
+              <MVText style={styles.title}>{item.date}</MVText>
             </TouchableOpacity>
           ))
         }
