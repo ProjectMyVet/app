@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 import styles from './styles'
 import { COLORS } from '../../constants'
 
-const fontTypes = {
-  'primary-regular': 'Roboto_400Regular',
-  'secondary-bold': 'Poppins_700Bold',
-}
+// const fontTypes = {
+//   'primary-regular': 'Roboto_400Regular',
+//   'secondary-bold': 'Poppins_700Bold',
+// }
 
 export function MVText(props) {
   const { children, color, uppercase, size, style, type, ...otherProps } = props
@@ -19,7 +19,7 @@ export function MVText(props) {
       color,
       fontSize: size,
       textTransform: uppercase ? 'uppercase' : null,
-      fontFamily: fontTypes[type],
+      // fontFamily: fontTypes[type],
     }
   }, [color, uppercase, size, type])
 
@@ -40,7 +40,7 @@ MVText.propTypes = {
 }
 
 MVText.defaultProps = {
-  color: COLORS.BLACK,
+  color: COLORS.WHITE,
   size: 14,
   style: {},
   type: 'primary-regular',

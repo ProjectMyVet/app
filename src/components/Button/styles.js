@@ -4,9 +4,9 @@ import { COLORS } from '../../constants'
 export default StyleSheet.create({
     button: {
         height: 50,
-        borderWidth: 1,
-        borderColor: COLORS.DIM_GRAY,
-        backgroundColor: COLORS.LIGHT_GRAY,
+        borderWidth: 2,
+        borderColor: COLORS.WHITE,
+        backgroundColor: COLORS.PRIMARY_BLUE,
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',

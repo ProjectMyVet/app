@@ -12,11 +12,11 @@ export function MVButton(props) {
 
   function renderLabel() {
     if (isLoading) {
-      return <ActivityIndicator color={COLORS.BLACK} />
+      return <ActivityIndicator color={COLORS.WHITE} />
     }
 
     return (
-      <MVText color={COLORS.BLACK} size={17} style={styles.label}>
+      <MVText color={COLORS.WHITE} size={17} style={styles.label}>
         {children}
       </MVText>
     )

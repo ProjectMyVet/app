@@ -48,14 +48,17 @@ export default StyleSheet.create({
     },
     cardGrade: {
         alignItems: 'center',
+        color: COLORS.BLACK,
         marginTop: 10
     },
     cardName: {
-        fontSize: 16
+        fontSize: 16,
+        color: COLORS.BLACK
     },
     cardValue: {
         fontSize: 26,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: COLORS.BLACK
     }
 });
   

@@ -7,18 +7,17 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: '100%'
     },
     vet: {
-        backgroundColor: COLORS.LIGHT_GRAY,
-        height: height,
+        backgroundColor: COLORS.PRIMARY_BLUE,
         width: width / 2,
         justifyContent: 'center',
         alignItems: 'center',
     },
     customer: {
-        backgroundColor: COLORS.DARK_GRAY,
-        height: height,
+        backgroundColor: COLORS.PRIMARY_ORANGE,
         width: width / 2,
         justifyContent: 'center',
         alignItems: 'center',
@@ -31,6 +30,7 @@ export default StyleSheet.create({
     userTitle: {
         fontSize: 24,
         fontWeight: 'bold',
+        color: COLORS.WHITE,
         marginTop: 10
     }
 });

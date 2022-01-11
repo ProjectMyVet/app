@@ -32,12 +32,12 @@ export function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} />
+      <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/929724367473115146/4.png' }} />
       <MVText style={styles.title}>Seja Bem-Vindo!</MVText>
       <View style={styles.line} />
       <MVText style={styles.subtitle}>Para acessar o MyVet continue com:</MVText>
       <MVButton style={styles.button} onPress={handleSubmit}>
-        <MVText>Continuar com o Google</MVText>
+        <MVText style={styles.continue} >Continuar com o Google</MVText>
         <AntDesign name='google' size={25} style={styles.icon} />
       </MVButton>
     </View>

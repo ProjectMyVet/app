@@ -8,7 +8,7 @@ const contentHeight = height - 90
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: COLORS.PRIMARY_BLUE,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -16,23 +16,29 @@ export default StyleSheet.create({
         width: '85%',
     },
     title: {
-        fontSize: 22,
-        color: COLORS.BLACK,
+        fontSize: 24,
+        marginTop: 20,
+        color: COLORS.WHITE,
     },
     subtitle: {
-        color: COLORS.DARK_GRAY
+        fontSize: 16,
+        color: COLORS.WHITE
     },
     image: {
-        width: width / 2,
+        width: width - 10,
         height: contentHeight / 4,
-        borderColor: COLORS.BLACK
+        borderColor: COLORS.WHITE
     },
     line: {
-        borderBottomColor: COLORS.LIGHT_GRAY,
+        borderBottomColor: COLORS.WHITE,
         borderBottomWidth: 1,
         marginBottom: 30,
-        marginTop: 90,
+        marginTop: 60,
         width: '80%'
     },
+    continue: {
+        color: COLORS.WHITE,
+        fontSize: 18
+    }
 });
   

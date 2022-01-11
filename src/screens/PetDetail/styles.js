@@ -27,10 +27,11 @@ export default StyleSheet.create({
     },
     datePickerStyle: {
         width: '100%',
-        color: COLORS.WHITE
+        color: COLORS.BLACK
     },
     label: {
         fontSize: 16,
+        color: COLORS.BLACK
     },
     picker: {
         height: 200,

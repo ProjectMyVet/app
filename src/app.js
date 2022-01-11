@@ -36,7 +36,7 @@ export function MenuTabNavigation({ navigation, route }) {
   function renderCustomerTabNavigator() {
     return (
       <Tab.Navigator 
-        initialRouteName='NewAttendenceScreen'
+        initialRouteName='NewAttendence'
         screenOptions={{ headerShown: false }}
       >
         <Tab.Screen 
@@ -134,10 +134,10 @@ export function MenuTabNavigation({ navigation, route }) {
 
 export default function App() {
   LogBox.ignoreLogs(['Require cycles are allowed'])
-  const [whereFontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Poppins_700Bold,
-  })
+  // const [whereFontsLoaded] = useFonts({
+  //   Roboto_400Regular,
+  //   Poppins_700Bold,
+  // })
 
   return (
     <NavigationContainer>
