@@ -2,9 +2,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { LogBox, YellowBox } from 'react-native'
-import { useFonts } from 'expo-font'
-import { Poppins_700Bold } from '@expo-google-fonts/poppins'
-import { Roboto_400Regular } from '@expo-google-fonts/roboto'
 import { AntDesign, Entypo, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
 import { 
@@ -94,7 +91,7 @@ export function MenuTabNavigation({ navigation, route }) {
           component={ScheduleScreen} 
           options={{
             tabBarLabel: 'Agenda',
-            tabBarIcon: () => renderIcon('home'),
+            tabBarIcon: () => <MaterialIcons name='schedule' size={26} />,
           }}
         />
         <Tab.Screen 
