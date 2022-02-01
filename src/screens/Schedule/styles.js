@@ -14,23 +14,30 @@ export default StyleSheet.create({
     },
     card: {
         width: '95%',
-        justifyContent: 'center',
-        // alignItems: 'flex-start',
+        padding: 5,
+        paddingTop: height / 20,
         height: height / 3.2,
         borderBottomWidth: 0.2,
         borderColor: COLORS.DIM_GRAY,
+        justifyContent: 'center'
     },
     cardTitle: {
         color: COLORS.BLACK,
-        fontSize: 20
+        fontSize: 20,
+        padding: 5
     },
     cardSubtitle: {
         color: COLORS.DIM_GRAY,
-        fontSize: 16
+        fontSize: 16,
+        paddingLeft: 5,
+        marginRight: 20,
     },
     cardSchedule: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around'
     },
+    cardIcon: {
+        justifyContent: 'center',
+    }
 });
   
