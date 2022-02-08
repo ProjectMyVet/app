@@ -34,12 +34,6 @@ export function MVButton(props) {
   )
 }
 
-MVButton.propTypes = {
-  children: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool,
-}
-
 MVButton.defaultProps = {
   isLoading: false,
 }

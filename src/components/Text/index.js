@@ -30,15 +30,6 @@ export function MVText(props) {
   )
 }
 
-MVText.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-  color: PropTypes.string,
-  size: PropTypes.number,
-  style: PropTypes.object,
-  type: PropTypes.string,
-  uppercase: PropTypes.bool,
-}
-
 MVText.defaultProps = {
   color: COLORS.WHITE,
   size: 14,
