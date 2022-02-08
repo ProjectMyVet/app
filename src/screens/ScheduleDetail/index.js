@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, FlatList, SafeAreaView } from 'react-native'
-import { MVText } from '../../components'
+import { MVText, MVButton } from '../../components'
 import Checkbox from 'expo-checkbox'
 import { getTurnLabel } from '../../utils'
 
@@ -218,6 +218,11 @@ export function ScheduleDetailScreen({ navigation, route }) {
     setDaysOfWeek(list)
   }
 
+  function handleSubmit() {
+    //TODO: rhian.costa - save data and call api
+    navigation.navigate('Schedule')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.list}>
@@ -256,6 +261,11 @@ export function ScheduleDetailScreen({ navigation, route }) {
             )
           }}
         />
+      </View>
+      <View style={styles.button}>
+        <MVButton onPress={handleSubmit}>
+          Salvar
+        </MVButton>
       </View>
     </SafeAreaView>
   )

@@ -5,7 +5,8 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
+        flexDirection: 'column'
     },
     list: {
         margin: 15
@@ -32,6 +33,11 @@ export default StyleSheet.create({
     },
     checkbox: {
         marginTop: 10
+    },
+    button: {
+        width: '80%',
+        bottom: 0,
+        left: '10%'
     }
 });
   
