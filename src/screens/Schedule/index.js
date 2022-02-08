@@ -112,13 +112,13 @@ export function ScheduleScreen({ navigation }) {
       // TODO: rhian.costa - 30/12/2021 - call to search all the schedules
     },[navigation])
     
-    function handleScheduleDetail(schedule) {
-      navigation.navigate('ScheduleDetail', { schedule })
+    function handleScheduleDetail(schedule, turn) {
+      navigation.navigate('ScheduleDetail', { schedule, turn })
     }
 
     return (
         <View style={styles.container}>
-          <TouchableOpacity style={styles.card} onPress={() => handleScheduleDetail(morningSchedule)}>
+          <TouchableOpacity style={styles.card} onPress={() => handleScheduleDetail(morningSchedule, 'MORNING')}>
             <View style={styles.cardSchedule}>
               <View>
                 <MVText style={styles.cardTitle}>Turno: Manhã</MVText>
@@ -140,7 +140,7 @@ export function ScheduleScreen({ navigation }) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={() => handleScheduleDetail(afternoonSchedule)}>   
+          <TouchableOpacity style={styles.card} onPress={() => handleScheduleDetail(afternoonSchedule, 'AFTERNOON')}>   
             <View style={styles.cardSchedule}>
               <View>
                 <MVText style={styles.cardTitle}>Turno: Tarde</MVText>
@@ -162,7 +162,7 @@ export function ScheduleScreen({ navigation }) {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={() => handleScheduleDetail(nightSchedule)}>
+          <TouchableOpacity style={styles.card} onPress={() => handleScheduleDetail(nightSchedule, 'NIGHT')}>
             <View style={styles.cardSchedule}>
               <View>
                 <MVText style={styles.cardTitle}>Turno: Noite</MVText>

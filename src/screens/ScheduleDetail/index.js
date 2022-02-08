@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { View, FlatList, SafeAreaView } from 'react-native'
+import { MVText } from '../../components'
 import Checkbox from 'expo-checkbox'
+import { getTurnLabel } from '../../utils'
 
 import styles from './styles'
 
@@ -44,36 +46,48 @@ const days = [
 
 export function ScheduleDetailScreen({ navigation, route }) {
   const [schedule, setSchedule] = useState([])
-  const [daysOfWeek, setDaysOfWeek] = useState([]) 
+  const [daysOfWeek, setDaysOfWeek] = useState([])
+  const [turn, setTurn] = useState('')
 
   useEffect(() => {
     const completeSchedule = route.params.schedule
-    setSchedule(completeSchedule)
     const newDates = days.map(item => {
       let value = completeSchedule.find(day => day.dayOfWeek == item.dayOfWeek)
       return value ? {...item, checked: true } : item
     })
+    setSchedule(completeSchedule)
     setDaysOfWeek(newDates)
+    setTurn(route.params.turn)
   }, [])
+
+  function handleChange(item) {
+    const list = Object.assign([], daysOfWeek)
+    list[item.dayOfWeek - 1].checked = !list[item.dayOfWeek - 1].checked
+    setDaysOfWeek(list)
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList 
-        data={daysOfWeek}
-        keyExtractor={(item) => item.dayOfWeek}
-        renderItem={({ item }) => {
-          return (
-            <Checkbox 
-              value={item.checked}
-              onValueChange={() => {
-                const list = Object.assign([], daysOfWeek)
-                list[item.dayOfWeek - 1].checked = !list[item.dayOfWeek - 1].checked
-                setDaysOfWeek(list)
-              }}
-            />
-          )
-        }}
-      />
+      <View style={styles.list}>
+        <MVText style={styles.title}>Turno: {getTurnLabel(turn)}</MVText>
+        <MVText style={styles.subtitle}>Horários:</MVText>
+        <FlatList 
+          data={daysOfWeek}
+          keyExtractor={(item) => item.dayOfWeek}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.listItem}>
+                <Checkbox 
+                  value={item.checked}
+                  style={styles.checkbox}
+                  onValueChange={() => handleChange(item)}
+                />
+                <MVText style={styles.itemTitle}>{item.label}</MVText>
+              </View> 
+            )
+          }}
+        />
+      </View>
     </SafeAreaView>
   )
 }
