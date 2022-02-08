@@ -7,6 +7,7 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        // top: 50
     },
     title: {
         fontSize: 22,
