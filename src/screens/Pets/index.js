@@ -103,11 +103,11 @@ export function PetsScreen({ navigation }) {
 
     function renderIcon(type) {
       if (type === 'DOG') {
-        return <FontAwesome5 style={styles.icon} name="dog" size={24} color="black" />
+        return <FontAwesome5 style={styles.icon} name='dog' size={24} color='black' />
       } else if (type === 'CAT') {
-        return <FontAwesome5 style={styles.icon} name="cat" size={24} color="black" />
+        return <FontAwesome5 style={styles.icon} name='cat' size={24} color='black' />
       } else {
-        return <FontAwesome style={styles.icon} name="paw" size={24} color="black" />
+        return <FontAwesome style={styles.icon} name='paw' size={24} color='black' />
       }
     }
 
