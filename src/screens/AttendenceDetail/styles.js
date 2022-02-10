@@ -25,6 +25,11 @@ export default StyleSheet.create({
     },
     field: {
         marginTop: 15
+    },
+    button: {
+        width: '80%',
+        bottom: 0,
+        left: '10%'
     }
 });
   
