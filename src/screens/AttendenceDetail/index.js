@@ -30,7 +30,7 @@ export function AttendenceDetailScreen({ navigation, route }) {
         <View style={styles.field}>
           <MVText style={styles.label}>Idade Pet:</MVText>
           <MVText style={styles.value}>{attendence.vetName}</MVText>
-        </View>
+        </View> 
       </ScrollView>
     </>
   )
