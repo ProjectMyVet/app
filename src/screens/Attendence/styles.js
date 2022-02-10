@@ -12,17 +12,29 @@ export default StyleSheet.create({
         flex: 1,
     },
     title: {
-        fontSize: 22,
+        fontSize: 18,
         color: COLORS.BLACK,
     },
     item: {
         alignItems: 'center',
         flexDirection: 'row',
         width: '90%',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         height: 120,
         borderBottomWidth: 0.5,
         borderColor: COLORS.DIM_GRAY
     },
+    subitemEnd: {
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        height: '100%',
+        alignItems: 'flex-end'
+    },
+    subitemStart: {
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        height: '100%',
+        alignItems: 'flex-start'
+    }
 });
   
