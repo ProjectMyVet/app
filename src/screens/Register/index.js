@@ -65,7 +65,8 @@ export function RegisterScreen({ navigation, route }) {
             email: values.email,
             crmv: values.crmv,
             career: values.career,
-            bio: values.bio
+            bio: values.bio,
+            userType
           }
           navigation.navigate('MenuTabNavigation', { userType, user })
         }}
