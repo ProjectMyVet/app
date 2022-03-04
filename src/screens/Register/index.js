@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, View, ScrollView } from 'react-native'
-import { MVText, MVForm, MVInput, MVButton } from '../../components'
+import { MVText, MVInput, MVButton } from '../../components'
 import { COLORS } from '../../constants'
 import { Formik } from 'formik'
 
 import styles from './styles'
+import axios from 'axios'
 
 export function RegisterScreen({ navigation, route }) {
   const [user, setUser] = useState({})
@@ -60,15 +61,41 @@ export function RegisterScreen({ navigation, route }) {
         enableReinitialize
         initialValues={{ name: user.name, email: user.email, crmv: '', career: '', bio: '' }}
         onSubmit={(values) => {
-          const user = {
-            name: values.name,
-            email: values.email,
-            crmv: values.crmv,
-            career: values.career,
-            bio: values.bio,
-            userType
+          // const user = {
+          //   name: values.name,
+          //   email: values.email,
+          //   crmv: values.crmv,
+          //   career: values.career,
+          //   bio: values.bio
+          // }
+          if (userType === 'customer') {
+            const customer = {
+              idToken: user.id,
+              name: values.name,
+              email: values.email,
+              photoUrl: user.photoUrl,
+              bio: values.bio
+            }
+            console.log(user)
+            console.log(customer)
+            axios.post('http://localhost:8010/myvet/users/customer', customer)
+              .then(response => navigation.navigate('MenuTabNavigation', { userType, user }))
+              .catch(function (error) {
+                if (error.response) {
+                  // Request made and server responded
+                  console.log(error.response.data);
+                  console.log(error.response.status);
+                  console.log(error.response.headers);
+                } else if (error.request) {
+                  // The request was made but no response was received
+                  console.log(error.request);
+                } else {
+                  // Something happened in setting up the request that triggered an Error
+                  console.log('Error', error.message);
+                }
+            
+              })
           }
-          navigation.navigate('MenuTabNavigation', { userType, user })
         }}
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (
