@@ -85,20 +85,22 @@ const mock = [
   },
 ]
 
-export function PetsScreen({ navigation }) {
+export function PetsScreen({ navigation, route }) {
     const [pets, setPets] = useState([])
+    const [userId, setUserId] = useState({})
 
     useEffect(() => {
       setPets(mock)
+      setUserId(route.params.userId)
       // TODO: rhian.costa - 30/12/2021 - call to search all the pets
     },[navigation, pets])
 
     function handlePetDetail(pet) {
-      navigation.navigate('PetDetail', { pet })
+      navigation.navigate('PetDetail', { pet, userId })
     }
 
     function handleAddPet() {
-      navigation.navigate('NewPet')
+      navigation.navigate('NewPet', { userId })
     }
 
     function renderIcon(type) {

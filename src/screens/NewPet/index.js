@@ -6,7 +6,7 @@ import { Formik } from 'formik'
 import styles from './styles'
 import { COLORS } from '../../constants'
 
-export function NewPetScreen({ navigation }) {
+export function NewPetScreen({ navigation, route }) {
 
     return (
         <ScrollView style={styles.container}>
@@ -15,6 +15,7 @@ export function NewPetScreen({ navigation }) {
             initialValues={{ name: '', breed: '', type: 'OTHER', birthDate: '10-11-2015' }}
             onSubmit={(values) => {
               const pet = {
+                userId: route.params.userId,
                 name: values.name,
                 breed: values.breed,
                 type: values.type,

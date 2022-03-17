@@ -21,8 +21,8 @@ export function LoginScreen({ navigation }) {
           const { type, user } = result
           if (type === 'success') {
               axios.get('http://localhost:8010/myvet/users/check', { params: { idToken: user.id }})
-                .then(response => setTimeout(() => navigation.navigate('UserType', { user }), 100))
-              // redirectScreen(response.data) TODO continuar
+                .then(response => setTimeout(() => navigation.navigate('MenuTabNavigation', { user, userType: response.data.userType, userId: response.data.id }), 100))
+                .catch(error => setTimeout(() => navigation.navigate('UserType', { user }), 100))
           } else {
               // TODO: Mostrar mensagem Sign In Canceled
           }
@@ -30,14 +30,6 @@ export function LoginScreen({ navigation }) {
       .catch(error => {
           console.log(error)
       })
-  }
-
-  function redirectScreen(data) {
-    if (data.exists) {
-      setTimeout(() => navigation.navigate('MenuTabNavigation', { user, userType: data.userType }), 100)
-    } else {
-      setTimeout(() => navigation.navigate('UserType', { user }), 100)
-    }
   }
 
   return (

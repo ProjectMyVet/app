@@ -17,7 +17,7 @@ export function RegisterScreen({ navigation, route }) {
   }, [route])
 
   function renderVetFields(handleChange, handleBlur, values) {
-    if (userType === 'vet') {
+    if (userType === 'VET') {
       return <>
           <MVInput 
             label='CRMV' 
@@ -38,7 +38,7 @@ export function RegisterScreen({ navigation, route }) {
   }
 
   function renderCustomerFields(handleChange, handleBlur, values) {
-    if (userType === 'customer') {
+    if (userType === 'CUSTOMER') {
       return <>
           <MVInput 
             label='Biografia' 
@@ -61,14 +61,7 @@ export function RegisterScreen({ navigation, route }) {
         enableReinitialize
         initialValues={{ name: user.name, email: user.email, crmv: '', career: '', bio: '' }}
         onSubmit={(values) => {
-          // const user = {
-          //   name: values.name,
-          //   email: values.email,
-          //   crmv: values.crmv,
-          //   career: values.career,
-          //   bio: values.bio
-          // }
-          if (userType === 'customer') {
+          if (userType === 'CUSTOMER') {
             const customer = {
               idToken: user.id,
               name: values.name,
@@ -76,25 +69,19 @@ export function RegisterScreen({ navigation, route }) {
               photoUrl: user.photoUrl,
               bio: values.bio
             }
-            console.log(user)
-            console.log(customer)
             axios.post('http://localhost:8010/myvet/users/customer', customer)
-              .then(response => navigation.navigate('MenuTabNavigation', { userType, user }))
-              .catch(function (error) {
-                if (error.response) {
-                  // Request made and server responded
-                  console.log(error.response.data);
-                  console.log(error.response.status);
-                  console.log(error.response.headers);
-                } else if (error.request) {
-                  // The request was made but no response was received
-                  console.log(error.request);
-                } else {
-                  // Something happened in setting up the request that triggered an Error
-                  console.log('Error', error.message);
-                }
-            
-              })
+              .then(response => navigation.navigate('MenuTabNavigation', { userType, user, userId: response.data.id }))
+          } else { 
+            const vet = {
+              idToken: user.id,
+              name: values.name,
+              email: values.email,
+              photoUrl: user.photoUrl,
+              crmv: values.crmv,
+              career: values.career
+            }
+            axios.post('http://localhost:8010/myvet/users/vet', vet)
+              .then(response => navigation.navigate('MenuTabNavigation', { userType, user, userId: response.data.id }))
           }
         }}
       >

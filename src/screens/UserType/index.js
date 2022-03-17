@@ -14,12 +14,12 @@ export function UserTypeScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => handleSubmit('vet')} style={styles.vet}>
+      <TouchableOpacity onPress={() => handleSubmit('VET')} style={styles.vet}>
         {/* <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} /> */}
         <Fontisto name="doctor" size={120} color="white" />
         <MVText style={styles.userTitle}>Veterinário</MVText>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => handleSubmit('customer')} style={styles.customer}>
+      <TouchableOpacity onPress={() => handleSubmit('CUSTOMER')} style={styles.customer}>
         {/* <Image style={styles.image} source={{ uri: 'https://cdn.discordapp.com/attachments/576875163686010911/908133391621324800/unknown.png' }} /> */}
         <Foundation name="guide-dog" size={120} color="white" />
         <MVText style={styles.userTitle}>Tutor</MVText>

@@ -27,12 +27,13 @@ const Tab = createBottomTabNavigator()
 
 export function MenuTabNavigation({ navigation, route }) {
   const userType = route.params.userType
+  const userId = route.params.userId
 
   function renderIcon(name) {
     return <AntDesign name={name} size={23} />
   }
 
-  function renderCustomerTabNavigator() {
+  function renderCustomerTabNavigator(userId) {
     return (
       <Tab.Navigator 
         initialRouteName='NewAttendence'
@@ -65,6 +66,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Pets' 
           component={PetsScreen} 
+          initialParams={{ userId }}
           options={{
             tabBarLabel: 'Pets',
             tabBarIcon: () => <MaterialIcons name='pets' size={26} />,
@@ -82,7 +84,7 @@ export function MenuTabNavigation({ navigation, route }) {
     )
   }
 
-  function renderVetTabNavigator() {
+  function renderVetTabNavigator(userId) {
     return (
       <Tab.Navigator 
         initialRouteName='Attendence'
@@ -116,17 +118,17 @@ export function MenuTabNavigation({ navigation, route }) {
     )
   }
 
-  function renderTabNavigator(userType) {
-    if (userType === 'customer') {
-      return renderCustomerTabNavigator()
+  function renderTabNavigator(userType, userId) {
+    if (userType === 'CUSTOMER') {
+      return renderCustomerTabNavigator(userId)
     } else {
-      return renderVetTabNavigator()
+      return renderVetTabNavigator(userId)
     }
   }
 
   return (
     <>
-      {renderTabNavigator(userType)}
+      {renderTabNavigator(userType, userId)}
     </>
   )
 }
