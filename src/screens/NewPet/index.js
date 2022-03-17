@@ -2,6 +2,7 @@ import React from 'react'
 import { View, ScrollView, Picker } from 'react-native'
 import { MVText, MVButton, MVInput, MVDatePicker } from '../../components'
 import { Formik } from 'formik'
+import axios from 'axios'
 
 import styles from './styles'
 import { COLORS } from '../../constants'
@@ -21,9 +22,8 @@ export function NewPetScreen({ navigation, route }) {
                 type: values.type,
                 birthDate: values.birthDate
               }
-              console.log(pet)
-              // TODO: rhian.costa - 30/12/2021 - call to api to save a new pet
-              navigation.navigate('Pets', { pet })
+              axios.post('http://localhost:8010/myvet/pets', pet)
+                .then(response => navigation.navigate('Pets'))
             }}
           >
             {({handleChange, handleBlur, handleSubmit, values}) => (

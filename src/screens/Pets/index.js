@@ -2,98 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, ScrollView } from 'react-native'
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'; 
 import { MVText, MVButton } from '../../components'
+import axios from 'axios'
 
 import styles from './styles'
-
-const mock = [
-  {
-    id: 1,
-    name: 'Doguinho',
-    birthDate: '19-11-2012',
-    breed: 'Vira lata',
-    type: 'DOG'
-  },
-  {
-    id: 2,
-    name: 'Belinha',
-    birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia',
-    type: 'OTHER'
-  },
-  {
-    id: 3,
-    name: 'Orlindo',
-    birthDate: '19-11-2010',
-    breed: 'siames',
-    type: 'CAT'
-  },
-  {
-    id: 4,
-    name: 'Doguinho',
-    birthDate: '19-11-2010',
-    breed: 'Vira lata',
-    type: 'DOG'
-  },
-  {
-    id: 5,
-    name: 'Belinha',
-    birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia',
-    type: 'OTHER'
-  },
-  {
-    id: 6,
-    name: 'Orlindo',
-    birthDate: '19-11-2010',
-    breed: 'siames',
-    type: 'CAT'
-  },
-  {
-    id: 7,
-    name: 'Doguinho',
-    birthDate: '19-11-2010',
-    breed: 'Vira lata',
-    type: 'DOG'
-  },
-  {
-    id: 8,
-    name: 'Belinha',
-    birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia',
-    type: 'OTHER'
-  },
-  {
-    id: 9,
-    name: 'Orlindo',
-    birthDate: '19-11-2010',
-    breed: 'siames',
-    type: 'CAT'
-  },
-  {
-    id: 10,
-    name: 'Doguinho',
-    birthDate: '19-11-2010',
-    breed: 'Vira lata',
-    type: 'DOG'
-  },
-  {
-    id: 11,
-    name: 'Belinha',
-    birthDate: '19-11-2010',
-    breed: 'lulu-da-pomerânia',
-    type: 'OTHER'
-  },
-]
 
 export function PetsScreen({ navigation, route }) {
     const [pets, setPets] = useState([])
     const [userId, setUserId] = useState({})
 
     useEffect(() => {
-      setPets(mock)
+      axios.get('http://localhost:8010/myvet/pets', { params: { userId: route.params.userId }})
+        .then(response => setPets(response.data))
       setUserId(route.params.userId)
-      // TODO: rhian.costa - 30/12/2021 - call to search all the pets
-    },[navigation, pets])
+    },[navigation, route])
 
     function handlePetDetail(pet) {
       navigation.navigate('PetDetail', { pet, userId })
