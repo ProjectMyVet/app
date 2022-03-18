@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { View, ScrollView, Picker } from 'react-native'
 import { MVText, MVButton, MVInput, MVDatePicker } from '../../components'
 import { Formik } from 'formik'
+import axios from 'axios'
 
 import styles from './styles'
 
 export function PetDetailScreen({ navigation, route }) {
     const [pet, setPet] = useState({})
+    const [userId, setUserId] = useState({})
 
     useEffect(() => {
       setPet(route.params.pet)
+      setUserId(route.params.userId)
     }, [route])
 
     return (
@@ -25,9 +28,8 @@ export function PetDetailScreen({ navigation, route }) {
             type: values.type,
             birthDate: values.birthDate
           }
-          console.log(pet)
-          // TODO: rhian.costa - 30/12/2021 - call to api to edit a new pet
-          navigation.navigate('Pets', { pet })
+          axios.put('http://localhost:8010/myvet/pets', pet, { params: { userId }})
+          navigation.navigate('Pets', { pet, userId })
         }}
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (
