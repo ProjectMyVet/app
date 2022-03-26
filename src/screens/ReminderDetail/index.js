@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { View, ScrollView } from 'react-native'
 import { MVText, MVButton, MVInput, MVDatePicker } from '../../components'
 import { Formik } from 'formik'
+import axios from 'axios'
 
 import styles from './styles'
 
 export function ReminderDetailScreen({ navigation, route }) {
     const [reminder, setReminder] = useState({})
+    const [userId, setUserId] = useState({})
 
     useEffect(() => {
       setReminder(route.params.reminder)
+      setUserId(route.params.userId)
     }, [route])
 
     return (
@@ -23,8 +26,8 @@ export function ReminderDetailScreen({ navigation, route }) {
               date: values.date,
               action: values.action,
             }
-            // TODO: rhian.costa - 30/12/2021 - call to api to edit a new reminder
-            navigation.navigate('Reminder')
+            axios.put('http://localhost:8010/myvet/reminders', reminder, { params: { userId }})
+                .then(response => navigation.navigate('Reminder'))
           }}
         >
           {({handleChange, handleBlur, handleSubmit, values}) => (

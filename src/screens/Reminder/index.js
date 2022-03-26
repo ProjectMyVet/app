@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, ScrollView } from 'react-native'
 import { MVText, MVButton } from '../../components'
+import axios from 'axios'
 
 import styles from './styles'
 
@@ -17,20 +18,22 @@ const mock = [
   },
 ]
 
-export function ReminderScreen({ navigation }) {
+export function ReminderScreen({ navigation, route }) {
   const [reminders, setReminders] = useState([])
+  const [userId, setUserId] = useState({})
 
   useEffect(() => {
-    setReminders(mock)
-    // TODO: rhian.costa - 30/12/2021 - call to search all the reminders
-  },[navigation, reminders])
+    axios.get('http://localhost:8010/myvet/reminders', { params: { userId: route.params.userId }})
+        .then(response => setReminders(response.data))
+    setUserId(route.params.userId)
+  },[navigation, route])
 
   function handleReminderDetail(reminder) {
-    navigation.navigate('ReminderDetail', { reminder })
+    navigation.navigate('ReminderDetail', { reminder, userId })
   }
 
   function handleAddReminder() {
-    navigation.navigate('NewReminder')
+    navigation.navigate('NewReminder', { userId })
   }
 
   return (

@@ -42,6 +42,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Reminder' 
           component={ReminderScreen} 
+          initialParams={{ userId }}
           options={{
             tabBarLabel: 'Lembrete',
             tabBarIcon: () => <AntDesign name='bells' size={26} />,
