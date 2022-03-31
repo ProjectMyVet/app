@@ -2,42 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { View, ScrollView, Image } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import { MVText } from '../../components'
+import axios from 'axios'
 
 import styles from './styles'
 
-const mockCustomer = {
-  id: 1,
-  idToken: 1,
-  name: 'Rhian Lopes da Costa',
-  email: 'rhianlopes63@gmail.com',
-  type: 'CUSTOMER',
-  bio: 'Sou pai da Gata que foi sequestrada em troca de comida aqui no pátio',
-  photoUrl: 'https://lh3.googleusercontent.com/a-/AOh14GjrntmDk8h1RclJOYjwH1tc7AJIVZy-_tR5Swnueg=s96-c',
-  quantityAttendance: 12,
-  quantityPet: 3
-}
-
-const mockVet = {
-  id: 1,
-  idToken: 1,
-  name: 'Rhian Lopes da Costa',
-  email: 'rhianlopes63@gmail.com',
-  type: 'VET',
-  crmv: '8683',
-  career: 'Sou formado em veterinária pela ULBRA em 2005, desde então tomo conta da minha clínica de Canoas.',
-  photoUrl: 'https://lh3.googleusercontent.com/a-/AOh14GjrntmDk8h1RclJOYjwH1tc7AJIVZy-_tR5Swnueg=s96-c',
-  quantityFinishedAttendance: 12,
-  quantityRequestedAttendance: 2,
-  quantityConfirmedAttendance: 4,
-  grade: 4.7,
-}
-
-export function ProfileScreen({ navigation }) {
+export function ProfileScreen({ navigation, route }) {
   const [user, setUser] = useState({})
+  const [userId, setUserId] = useState({})
 
   useEffect(() => {
-    setUser(mockVet)
-    //TODO - 03/01/2021 - call to api to search user profile
+    axios.get('http://localhost:8010/myvet/users/' + route.params.userId)
+        .then(response => setUser(response.data))
+    setUserId(route.params.userId)
   }, [navigation])
 
     return (
@@ -48,10 +24,10 @@ export function ProfileScreen({ navigation }) {
           <MVText style={styles.name}>{user.name}</MVText>
           <MVText style={styles.email}>{user.email}</MVText>
           {user.type === 'VET' && 
-            <MVText>CRMV: {user.crmv}</MVText>
+            <MVText style={styles.crmv}>CRMV: {user.crmv}</MVText>
           }
           <MVText style={styles.description}>{user.type === 'VET' ? user.career : user.bio}</MVText>
-          {user.type === 'VET' ? 
+          {/* {user.type === 'VET' ? TODO: adicionar contagem de atendimentos
             <>
               <MVText style={styles.statsTitle}>Atendimentos:</MVText>
               <View style={styles.statsContainer}>
@@ -86,7 +62,7 @@ export function ProfileScreen({ navigation }) {
                 <MVText style={styles.cardValue}>{user.quantityPet}</MVText>
               </View>
             </View>
-          }
+          } */}
         </ScrollView>
     );
 }

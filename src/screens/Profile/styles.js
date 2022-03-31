@@ -27,6 +27,10 @@ export default StyleSheet.create({
         fontSize: 14,
         color: COLORS.DIM_GRAY,
     },
+    crmv: {
+        fontSize: 14,
+        color: COLORS.BLACK,
+    },
     description: {
         fontSize: 16,
         marginTop: 30,

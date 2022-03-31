@@ -76,6 +76,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Profile' 
           component={ProfileScreen} 
+          initialParams={{ userId }}
           options={{
             tabBarLabel: 'Perfil',
             tabBarIcon: () => <Ionicons name='person' size={26} />,
@@ -94,6 +95,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Schedule' 
           component={ScheduleScreen} 
+          initialParams={{ userId }}
           options={{
             tabBarLabel: 'Agenda',
             tabBarIcon: () => <MaterialIcons name='schedule' size={26} />,
@@ -110,6 +112,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Profile' 
           component={ProfileScreen} 
+          initialParams={{ userId }}
           options={{
             tabBarLabel: 'Perfil',
             tabBarIcon: () => <Ionicons name='person' size={26} />,
