@@ -187,7 +187,6 @@ export function ScheduleDetailScreen({ navigation, route }) {
   function getTimes(completeSchedule, defaultSchedule) {
     return defaultSchedule.map(item => {
       let value = completeSchedule.find(time => time.fromTime === item.fromTime && time.toTime === item.toTime)
-      console.log(completeSchedule)
       return value ? {...item, id: value.id, checked: true } : {...item, id: Math.random()}
     })
   }
@@ -224,7 +223,6 @@ export function ScheduleDetailScreen({ navigation, route }) {
       turn,
       dates
     }
-    console.log(body)
     axios.post('http://localhost:8010/myvet/schedulers', body)
       .then(response => setTimeout(() => {
         navigation.navigate('Schedule', { userId })

@@ -16,11 +16,13 @@ export function ScheduleScreen({ navigation, route }) {
 
     useEffect(() => {
       axios.get('http://localhost:8010/myvet/schedulers', { params: { userId: route.params.userId }})
-          .then(response => setSchedule(response.data))
+          .then(response => {
+            setMorningSchedule(response.data.filter(item => item.turn === 'MORNING'))
+            setAfternoonSchedule(response.data.filter(item => item.turn === 'AFTERNOON'))
+            setNightSchedule(response.data.filter(item => item.turn === 'NIGHT'))
+            setSchedule(response.data)
+          })
       setUserId(route.params.userId)
-      setMorningSchedule(schedule.filter(item => item.turn === 'MORNING'))
-      setAfternoonSchedule(schedule.filter(item => item.turn === 'AFTERNOON'))
-      setNightSchedule(schedule.filter(item => item.turn === 'NIGHT'))
     },[navigation, route])
     
     function handleScheduleDetail(schedule, turn) {
