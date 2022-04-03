@@ -12,7 +12,7 @@ export function MVDatePicker(props) {
             <DatePicker
                 {...otherProps}
                 style={styles.datePickerStyle}
-                placeholder='select date'
+                placeholder='Selecione a Data'
                 mode={mode}
                 format={mode == 'date' ? 'DD-MM-YYYY' : 'DD-MM-YYYY HH:mm'}
                 confirmBtnText='Confirmar'

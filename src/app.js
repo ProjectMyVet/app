@@ -19,7 +19,10 @@ import {
   NewReminderScreen,
   ReminderDetailScreen,
   ScheduleDetailScreen,
-  AttendenceDetailScreen
+  AttendenceDetailScreen,
+  NewAttendenceFormScreen,
+  NewAttendenceDateScreen,
+  NewAttendenceTimeScreen
 } from './screens'
 
 const Stack = createStackNavigator()
@@ -59,6 +62,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='NewAttendence' 
           component={NewAttendenceScreen} 
+          initialParams={{ userId }}
           options={{
             tabBarLabel: 'Novo',
             tabBarIcon: () => <Ionicons name='add-circle-outline' size={28} />,
@@ -160,6 +164,9 @@ export default function App() {
         <Stack.Screen component={ReminderDetailScreen} name='ReminderDetail' />
         <Stack.Screen component={ScheduleDetailScreen} name='ScheduleDetail' />
         <Stack.Screen component={AttendenceDetailScreen} name='AttendenceDetail' />
+        <Stack.Screen component={NewAttendenceFormScreen} name='NewAttendenceForm' />
+        <Stack.Screen component={NewAttendenceDateScreen} name='NewAttendenceDate' />
+        <Stack.Screen component={NewAttendenceTimeScreen} name='NewAttendenceTime' />
       </Stack.Navigator>
     </NavigationContainer>
   );

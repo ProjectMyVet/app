@@ -5,7 +5,6 @@ import { Formik } from 'formik'
 import axios from 'axios'
 
 import styles from './styles'
-import { COLORS } from '../../constants'
 
 export function NewPetScreen({ navigation, route }) {
 
