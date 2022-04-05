@@ -27,11 +27,10 @@ export default StyleSheet.create({
     },
     datePickerStyle: {
         width: '100%',
-        color: COLORS.BLACK
+        color: COLORS.WHITE
     },
     label: {
         fontSize: 16,
-        color: COLORS.BLACK
     },
     picker: {
         height: 200,
@@ -39,12 +38,9 @@ export default StyleSheet.create({
         justifyContent: 'flex-start',
     },
     button: {
-        width: '90%',
+        width: '80%',
         bottom: 0,
-        left: '5%'
-    },
-    buttonCard: {
-        marginTop: 40
+        left: '10%'
     }
 });
   

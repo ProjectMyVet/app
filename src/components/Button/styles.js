@@ -11,7 +11,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         width: '100%',
         borderRadius: 10,
-        marginVertical: 15,
+        marginVertical: 5,
     },
     label: {
         letterSpacing: 1.2,

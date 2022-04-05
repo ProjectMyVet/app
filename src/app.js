@@ -24,7 +24,9 @@ import {
   NewAttendanceDateScreen,
   NewAttendanceTimeScreen,
   NewAttendanceVetScreen,
-  NewAttendanceVetDetailScreen
+  NewAttendanceVetDetailScreen,
+  AttendanceFinishScreen,
+  TreatmentsScreen
 } from './screens'
 
 const Stack = createStackNavigator()
@@ -173,6 +175,8 @@ export default function App() {
         <Stack.Screen component={NewAttendanceTimeScreen} name='NewAttendanceTime' />
         <Stack.Screen component={NewAttendanceVetScreen} name='NewAttendanceVet' />
         <Stack.Screen component={NewAttendanceVetDetailScreen} name='NewAttendanceVetDetail' />
+        <Stack.Screen component={AttendanceFinishScreen} name='AttendanceFinish' />
+        <Stack.Screen component={TreatmentsScreen} name='Treatments' />
       </Stack.Navigator>
     </NavigationContainer>
   );

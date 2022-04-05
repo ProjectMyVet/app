@@ -45,11 +45,11 @@ export function AttendanceDetailScreen({ navigation, route }) {
   }
 
   function handleSubmitFinish() {
-
+    navigation.navigate('AttendanceFinish', { userId, attendanceId: attendance.id })
   }
 
   function handleSubmitEvaluate() {
-
+    
   }
 
   return (
