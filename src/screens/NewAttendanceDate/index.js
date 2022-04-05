@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { View, ScrollView, Picker } from 'react-native'
-import { MVText, MVButton, MVInput, MVDatePicker } from '../../components'
+import { MVText, MVButton, MVDatePicker } from '../../components'
 import { Formik } from 'formik'
-import axios from 'axios'
 
 import styles from './styles'
 
-export function NewAttendenceDateScreen({ navigation, route }) {
+export function NewAttendanceDateScreen({ navigation, route }) {
   const [petId, setPetId] = useState({})
   const [type, setType] = useState({})
   const [userId, setUserId] = useState({})
@@ -23,7 +22,7 @@ export function NewAttendenceDateScreen({ navigation, route }) {
         enableReinitialize
         initialValues={{ date: '03-03-2022', turn: 'AFTERNOON' }}
         onSubmit={(values) => {
-          navigation.navigate('NewAttendenceTime', { type, userId, petId, date: values.date, turn: values.turn })
+          navigation.navigate('NewAttendanceTime', { type, userId, petId, date: values.date, turn: values.turn })
         }}
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (

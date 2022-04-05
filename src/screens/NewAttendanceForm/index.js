@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import styles from './styles'
 
-export function NewAttendenceFormScreen({ navigation, route }) {
+export function NewAttendanceFormScreen({ navigation, route }) {
   const [pets, setPets] = useState([])
   const [defaultPetId, setDefaultPetId] = useState([])
   const [type, setType] = useState({})
@@ -29,7 +29,7 @@ export function NewAttendenceFormScreen({ navigation, route }) {
         enableReinitialize
         initialValues={{ petId: defaultPetId }}
         onSubmit={(values) => {
-          navigation.navigate('NewAttendenceDate', { type, userId, petId: values.petId })
+          navigation.navigate('NewAttendanceDate', { type, userId, petId: values.petId })
         }}
       >
         {({handleChange, handleBlur, handleSubmit, values}) => (

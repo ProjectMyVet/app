@@ -5,7 +5,7 @@ import { MaterialIcons, FontAwesome5, EvilIcons } from '@expo/vector-icons'
 
 import styles from './styles'
 
-export function NewAttendenceScreen({ navigation, route }) {
+export function NewAttendanceScreen({ navigation, route }) {
   const [userId, setUserId] = useState({})
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export function NewAttendenceScreen({ navigation, route }) {
   },[navigation, route])
 
   function handleSubmit(type) {
-    navigation.navigate('NewAttendenceForm', { type, userId })
+    navigation.navigate('NewAttendanceForm', { type, userId })
   }
 
   return (

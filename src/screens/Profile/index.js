@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { View, ScrollView, Image } from 'react-native'
-import { AntDesign } from '@expo/vector-icons'
 import { MVText } from '../../components'
 import axios from 'axios'
 

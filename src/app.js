@@ -8,8 +8,8 @@ import {
   LoginScreen,
   UserTypeScreen,
   RegisterScreen,
-  NewAttendenceScreen,
-  AttendenceScreen,
+  NewAttendanceScreen,
+  AttendanceScreen,
   ProfileScreen,
   PetsScreen,
   ReminderScreen,
@@ -19,10 +19,12 @@ import {
   NewReminderScreen,
   ReminderDetailScreen,
   ScheduleDetailScreen,
-  AttendenceDetailScreen,
-  NewAttendenceFormScreen,
-  NewAttendenceDateScreen,
-  NewAttendenceTimeScreen
+  AttendanceDetailScreen,
+  NewAttendanceFormScreen,
+  NewAttendanceDateScreen,
+  NewAttendanceTimeScreen,
+  NewAttendanceVetScreen,
+  NewAttendanceVetDetailScreen
 } from './screens'
 
 const Stack = createStackNavigator()
@@ -36,10 +38,10 @@ export function MenuTabNavigation({ navigation, route }) {
     return <AntDesign name={name} size={23} />
   }
 
-  function renderCustomerTabNavigator(userId) {
+  function renderCustomerTabNavigator(userType, userId) {
     return (
       <Tab.Navigator 
-        initialRouteName='NewAttendence'
+        initialRouteName='NewAttendance'
         screenOptions={{ headerShown: false }}
       >
         <Tab.Screen 
@@ -52,16 +54,17 @@ export function MenuTabNavigation({ navigation, route }) {
           }}
         />
         <Tab.Screen 
-          name='Attendence' 
-          component={AttendenceScreen} 
+          name='Attendance' 
+          component={AttendanceScreen} 
+          initialParams={{ userId, userType }}
           options={{
             tabBarLabel: 'Atendimentos',
             tabBarIcon: () => <Entypo name='list' size={26} />,
           }}
         />
         <Tab.Screen 
-          name='NewAttendence' 
-          component={NewAttendenceScreen} 
+          name='NewAttendance' 
+          component={NewAttendanceScreen} 
           initialParams={{ userId }}
           options={{
             tabBarLabel: 'Novo',
@@ -90,10 +93,10 @@ export function MenuTabNavigation({ navigation, route }) {
     )
   }
 
-  function renderVetTabNavigator(userId) {
+  function renderVetTabNavigator(userType, userId) {
     return (
       <Tab.Navigator 
-        initialRouteName='Attendence'
+        initialRouteName='Attendance'
         screenOptions={{ headerShown: false }}
       >
         <Tab.Screen 
@@ -106,8 +109,9 @@ export function MenuTabNavigation({ navigation, route }) {
           }}
         />
         <Tab.Screen 
-          name='Attendence' 
-          component={AttendenceScreen} 
+          name='Attendance' 
+          component={AttendanceScreen} 
+          initialParams={{ userId, userType }}
           options={{
             tabBarLabel: 'Atendimentos',
             tabBarIcon: () => <Entypo name='list' size={26} />,
@@ -128,9 +132,9 @@ export function MenuTabNavigation({ navigation, route }) {
 
   function renderTabNavigator(userType, userId) {
     if (userType === 'CUSTOMER') {
-      return renderCustomerTabNavigator(userId)
+      return renderCustomerTabNavigator(userType, userId)
     } else {
-      return renderVetTabNavigator(userId)
+      return renderVetTabNavigator(userType, userId)
     }
   }
 
@@ -163,10 +167,12 @@ export default function App() {
         <Stack.Screen component={NewReminderScreen} name='NewReminder' />
         <Stack.Screen component={ReminderDetailScreen} name='ReminderDetail' />
         <Stack.Screen component={ScheduleDetailScreen} name='ScheduleDetail' />
-        <Stack.Screen component={AttendenceDetailScreen} name='AttendenceDetail' />
-        <Stack.Screen component={NewAttendenceFormScreen} name='NewAttendenceForm' />
-        <Stack.Screen component={NewAttendenceDateScreen} name='NewAttendenceDate' />
-        <Stack.Screen component={NewAttendenceTimeScreen} name='NewAttendenceTime' />
+        <Stack.Screen component={AttendanceDetailScreen} name='AttendanceDetail' />
+        <Stack.Screen component={NewAttendanceFormScreen} name='NewAttendanceForm' />
+        <Stack.Screen component={NewAttendanceDateScreen} name='NewAttendanceDate' />
+        <Stack.Screen component={NewAttendanceTimeScreen} name='NewAttendanceTime' />
+        <Stack.Screen component={NewAttendanceVetScreen} name='NewAttendanceVet' />
+        <Stack.Screen component={NewAttendanceVetDetailScreen} name='NewAttendanceVetDetail' />
       </Stack.Navigator>
     </NavigationContainer>
   );

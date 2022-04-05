@@ -14,7 +14,7 @@ export default StyleSheet.create({
         marginTop: 10,
         marginBottom: 20,
         fontWeight: 'bold',
-        left: '15%'
+        left: '20%'
     },
     label: {
         fontSize: 16,
@@ -24,7 +24,7 @@ export default StyleSheet.create({
         height: 200,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-        left: '35%'
+        left: '27%'
     },
     button: {
         width: '80%',
