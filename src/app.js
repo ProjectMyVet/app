@@ -26,7 +26,9 @@ import {
   NewAttendanceVetScreen,
   NewAttendanceVetDetailScreen,
   AttendanceFinishScreen,
-  TreatmentsScreen
+  TreatmentsScreen,
+  NewMedicationScreen,
+  MedicationsScreen
 } from './screens'
 
 const Stack = createStackNavigator()
@@ -85,7 +87,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Profile' 
           component={ProfileScreen} 
-          initialParams={{ userId }}
+          initialParams={{ userId, userType }}
           options={{
             tabBarLabel: 'Perfil',
             tabBarIcon: () => <Ionicons name='person' size={26} />,
@@ -122,7 +124,7 @@ export function MenuTabNavigation({ navigation, route }) {
         <Tab.Screen 
           name='Profile' 
           component={ProfileScreen} 
-          initialParams={{ userId }}
+          initialParams={{ userId, userType }}
           options={{
             tabBarLabel: 'Perfil',
             tabBarIcon: () => <Ionicons name='person' size={26} />,
@@ -177,6 +179,8 @@ export default function App() {
         <Stack.Screen component={NewAttendanceVetDetailScreen} name='NewAttendanceVetDetail' />
         <Stack.Screen component={AttendanceFinishScreen} name='AttendanceFinish' />
         <Stack.Screen component={TreatmentsScreen} name='Treatments' />
+        <Stack.Screen component={NewMedicationScreen} name='NewMedication' />
+        <Stack.Screen component={MedicationsScreen} name='Medications' />
       </Stack.Navigator>
     </NavigationContainer>
   );

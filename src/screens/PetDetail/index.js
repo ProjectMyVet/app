@@ -20,7 +20,7 @@ export function PetDetailScreen({ navigation, route }) {
   }
 
   function handleRedirectMedications() {
-    
+    navigation.navigate('Medications', { pet, userId })
   }
 
   return (

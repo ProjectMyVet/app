@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, ScrollView, Image } from 'react-native'
 import { MVText } from '../../components'
+import { AntDesign } from '@expo/vector-icons'
 import axios from 'axios'
 
 import styles from './styles'
@@ -8,11 +9,18 @@ import styles from './styles'
 export function ProfileScreen({ navigation, route }) {
   const [user, setUser] = useState({})
   const [userId, setUserId] = useState({})
+  const [userType, setUserType] = useState({})
 
   useEffect(() => {
-    axios.get('http://localhost:8010/myvet/users/' + route.params.userId)
+    if (route.params.userType === 'VET') {
+      axios.get('http://localhost:8010/myvet/users/vet/' + route.params.userId)
         .then(response => setUser(response.data))
+    } else {
+      axios.get('http://localhost:8010/myvet/users/customer/' + route.params.userId)
+        .then(response => setUser(response.data))
+    }
     setUserId(route.params.userId)
+    setUserType(route.params.userType)
   }, [navigation])
 
     return (
@@ -26,7 +34,7 @@ export function ProfileScreen({ navigation, route }) {
             <MVText style={styles.crmv}>CRMV: {user.crmv}</MVText>
           }
           <MVText style={styles.description}>{user.type === 'VET' ? user.career : user.bio}</MVText>
-          {/* {user.type === 'VET' ? TODO: adicionar contagem de atendimentos
+          {userType === 'VET' ?
             <>
               <MVText style={styles.statsTitle}>Atendimentos:</MVText>
               <View style={styles.statsContainer}>
@@ -61,7 +69,7 @@ export function ProfileScreen({ navigation, route }) {
                 <MVText style={styles.cardValue}>{user.quantityPet}</MVText>
               </View>
             </View>
-          } */}
+          }
         </ScrollView>
     );
 }

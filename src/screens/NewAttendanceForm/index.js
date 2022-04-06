@@ -24,39 +24,41 @@ export function NewAttendanceFormScreen({ navigation, route }) {
   },[navigation, route])
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Formik
-        enableReinitialize
-        initialValues={{ petId: defaultPetId }}
-        onSubmit={(values) => {
-          navigation.navigate('NewAttendanceDate', { type, userId, petId: values.petId })
-        }}
-      >
-        {({handleChange, handleBlur, handleSubmit, values}) => (
-          <View>
-            <MVText style={styles.title}>Selecione o seu Pet</MVText>
-            <View style={styles.picker}>
-              <Picker
-                selectedValue={values.type}
-                style={{ height: 20, width: 100}}
-                onValueChange={handleChange('petId')}
-                itemStyle={{ fontSize: 16 }}
-                prompt={defaultPetId}
-              > 
-                {pets.map((item) => (
-                    <Picker.Item key={item.id} label={item.name} value={item.id} />
-                  ))
-                }
-              </Picker>
+    <>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Formik
+          enableReinitialize
+          initialValues={{ petId: defaultPetId }}
+          onSubmit={(values) => {
+            navigation.navigate('NewAttendanceDate', { type, userId, petId: values.petId })
+          }}
+        >
+          {({handleChange, handleBlur, handleSubmit, values}) => (
+            <View>
+              <MVText style={styles.title}>Selecione o seu Pet</MVText>
+              <View style={styles.picker}>
+                <Picker
+                  selectedValue={values.type}
+                  style={{ height: 20, width: 100}}
+                  onValueChange={handleChange('petId')}
+                  itemStyle={{ fontSize: 16 }}
+                  prompt={defaultPetId}
+                > 
+                  {pets.map((item) => (
+                      <Picker.Item key={item.id} label={item.name} value={item.id} />
+                    ))
+                  }
+                </Picker>
+              </View>
+              <View style={styles.button}>
+                <MVButton onPress={handleSubmit}>
+                  Próximo
+                </MVButton>
+              </View>
             </View>
-            <View style={styles.button}>
-              <MVButton onPress={handleSubmit}>
-                Próximo
-              </MVButton>
-            </View>
-          </View>
-        )}
-      </Formik>
-    </ScrollView>
+          )}
+        </Formik>
+      </ScrollView>
+    </>
   )
 }
