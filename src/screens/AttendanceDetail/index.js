@@ -49,7 +49,7 @@ export function AttendanceDetailScreen({ navigation, route }) {
   }
 
   function handleSubmitEvaluate() {
-    
+    navigation.navigate('Evaluate', { userId, attendanceId: attendance.id })
   }
 
   return (

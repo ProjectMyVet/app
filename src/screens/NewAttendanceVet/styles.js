@@ -31,10 +31,13 @@ export default StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         width: '90%',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         height: 70,
         borderBottomWidth: 0.5,
         borderColor: COLORS.DIM_GRAY
+    },
+    starContainer: {
+        flexDirection: 'row',
     },
     icon: {
         marginRight: 20

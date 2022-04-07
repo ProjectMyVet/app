@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, ScrollView } from 'react-native'
-import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'; 
+import { FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { MVText, MVButton } from '../../components'
 import axios from 'axios'
 

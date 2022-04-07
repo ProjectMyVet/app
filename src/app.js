@@ -28,7 +28,8 @@ import {
   AttendanceFinishScreen,
   TreatmentsScreen,
   NewMedicationScreen,
-  MedicationsScreen
+  MedicationsScreen,
+  EvaluateScreen
 } from './screens'
 
 const Stack = createStackNavigator()
@@ -181,6 +182,7 @@ export default function App() {
         <Stack.Screen component={TreatmentsScreen} name='Treatments' />
         <Stack.Screen component={NewMedicationScreen} name='NewMedication' />
         <Stack.Screen component={MedicationsScreen} name='Medications' />
+        <Stack.Screen component={EvaluateScreen} name='Evaluate' />
       </Stack.Navigator>
     </NavigationContainer>
   );

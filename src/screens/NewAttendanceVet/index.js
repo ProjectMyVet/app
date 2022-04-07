@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, TouchableOpacity, ScrollView, Image } from 'react-native'
 import { MVText } from '../../components'
+import { MaterialIcons } from '@expo/vector-icons'
 import axios from 'axios'
 
 import styles from './styles'
@@ -55,8 +56,11 @@ export function NewAttendanceVetScreen({ navigation, route }) {
               <View style={styles.imageContainer}>
                 <Image resizeMode='cover' style={styles.image} source={{ uri: item.photoUrl }} />
               </View>
-              <MVText style={styles.title}>{"Dr. " + item.name}</MVText>
-              {/* //TODO implementar nota */}
+              <MVText style={styles.title}>{item.name.length >= 25 ? "Dr. " + item.name.substring(0, 25) + "..." : "Dr. " + item.name}</MVText>
+              <View style={styles.starContainer}>
+                <MVText style={styles.title}>{parseFloat(item.grade).toFixed(1)}</MVText>
+                <MaterialIcons name="star" size={25} color="#FFA000"/>
+              </View>
             </TouchableOpacity>
           ))
         }
