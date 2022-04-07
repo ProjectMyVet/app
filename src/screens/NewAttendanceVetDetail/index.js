@@ -30,13 +30,14 @@ export function NewAttendanceVetDetailScreen({ navigation, route }) {
     const body = {
       customerId: userId,
       vetId: vet.id,
-      petId,
+      petId: petId,
       type,
       turn,
       date,
       fromTime,
       toTime
     }
+    console.log(body)
     axios.post('http://localhost:8010/myvet/attendances', body)
       .then(response => navigation.navigate('NewAttendance', { userId }))
   }

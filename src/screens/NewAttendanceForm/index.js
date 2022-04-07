@@ -8,7 +8,7 @@ import styles from './styles'
 
 export function NewAttendanceFormScreen({ navigation, route }) {
   const [pets, setPets] = useState([])
-  const [defaultPetId, setDefaultPetId] = useState([])
+  const [defaultPet, setDefaultPet] = useState([])
   const [type, setType] = useState({})
   const [userId, setUserId] = useState({})
 
@@ -16,7 +16,7 @@ export function NewAttendanceFormScreen({ navigation, route }) {
     axios.get('http://localhost:8010/myvet/pets', { params: { userId: route.params.userId }})
       .then(response => { 
         setPets(response.data) 
-        setDefaultPetId(response.data[0].id)
+        setDefaultPet(response.data[0])
       })
     
     setUserId(route.params.userId)
@@ -28,9 +28,10 @@ export function NewAttendanceFormScreen({ navigation, route }) {
       <ScrollView contentContainerStyle={styles.container}>
         <Formik
           enableReinitialize
-          initialValues={{ petId: defaultPetId }}
+          initialValues={{ petId: new String(defaultPet.id) }}
           onSubmit={(values) => {
-            navigation.navigate('NewAttendanceDate', { type, userId, petId: values.petId })
+            const petIdFormatted = pets.find(item => item.id === parseInt(values.petId))
+            navigation.navigate('NewAttendanceDate', { type, userId, petId: parseInt(petIdFormatted.id) })
           }}
         >
           {({handleChange, handleBlur, handleSubmit, values}) => (
@@ -38,14 +39,14 @@ export function NewAttendanceFormScreen({ navigation, route }) {
               <MVText style={styles.title}>Selecione o seu Pet</MVText>
               <View style={styles.picker}>
                 <Picker
-                  selectedValue={values.type}
+                  selectedValue={values.petId}
                   style={{ height: 20, width: 100}}
                   onValueChange={handleChange('petId')}
                   itemStyle={{ fontSize: 16 }}
-                  prompt={defaultPetId}
+                  prompt={defaultPet.name}
                 > 
                   {pets.map((item) => (
-                      <Picker.Item key={item.id} label={item.name} value={item.id} />
+                      <Picker.Item key={item.id} label={item.name} value={item.id.toString()} />
                     ))
                   }
                 </Picker>
